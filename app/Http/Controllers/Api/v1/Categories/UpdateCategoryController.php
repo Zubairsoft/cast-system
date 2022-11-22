@@ -10,9 +10,7 @@ class UpdateCategoryController extends Controller
 {
 
     public function __invoke(UpdateCategoryRequest $request, int $id)
-    {
-        //TODO change to ar
-      
+    {      
         $category=(new UpdateCategoryAction)($request,$id);
 
         return sendSuccessResponse($category,__('messages.data-updating'));

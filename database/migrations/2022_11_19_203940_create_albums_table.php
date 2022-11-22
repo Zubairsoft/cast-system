@@ -14,14 +14,15 @@ return new class extends Migration
     public function up()
     {
         Schema::create('albums', function (Blueprint $table) {
-            $table->id();
+            $table->uuid('id')->primary();
             $table->string('name_en');
             $table->string('name_ar');
-            $table->string('logo');
             $table->boolean('is_active')->default(false);
-            $table->unsignedBigInteger('category_id');
+            $table->string('category_id');
+            $table->string('creator_id');
 
             $table->foreign('category_id')->references('id')->on('categories')->onDelete('cascade');
+            $table->foreign('creator_id')->references('id')->on('users')->onDelete('cascade');
 
             $table->timestamps();
         });

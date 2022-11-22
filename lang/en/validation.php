@@ -180,6 +180,7 @@ return [
         'password' => 'Password',
         'category_name_en' => 'Category Name En',
         'category_name_ar' => 'Category Name Ar',
+        'username' => 'UserName'
     ],
 
 ];

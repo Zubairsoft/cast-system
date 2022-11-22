@@ -5,6 +5,7 @@ namespace App\Http\Requests\Users\Account\Auth;
 use Illuminate\Contracts\Validation\Validator;
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Http\Exceptions\HttpResponseException;
+use Illuminate\Validation\Rule;
 use Illuminate\Validation\Rules\File;
 
 class RegisterRequest extends FormRequest
@@ -29,6 +30,7 @@ class RegisterRequest extends FormRequest
         return [
             //
             'name' => ['required', 'string', 'max:255', 'min:3'],
+            'username'=>['required', 'string', 'max:255', 'min:3',Rule::unique('users','username')],
             'email' => ['required', 'email', 'unique:users,email'],
             'avatar' => ['nullable', File::image()->max(3 * 1024)],
             'password' => ['min:4', 'confirmed']

@@ -2,8 +2,7 @@
 
 namespace Domains\User\Action\Auth;
 
-use App\Http\Controllers\Api\v1\Users\Account\Auth\RegisterController;
-use App\Http\Requests\Auth\RegisterRequest;
+use App\Http\Requests\Users\Account\Auth\RegisterRequest;
 use App\Models\User;
 use Illuminate\Http\JsonResponse;
 
@@ -15,7 +14,7 @@ class RegisterAction
      * 
      * @return JsonResponse
      */
-    public function __invoke(RegisterController $request): User
+    public function __invoke(RegisterRequest $request): User
     {
         $attributes = $request->validated();
 

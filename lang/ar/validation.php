@@ -131,6 +131,7 @@ return [
         'password' => 'كلمة المرور',
         'category_name_en' => 'اسم الفئة بالانجليزي',
         'category_name_ar' => 'اسم الفئة بالعربي',
+        'username' => 'اسم المستخدم',
     ],
 
 
@@ -160,12 +161,12 @@ return [
         'password' => [
             'min' => 'يجب أن يكون طول :attribute على الأقل 6 أحرف.'
         ],
-        'category_name_en'=>[
+        'category_name_en' => [
             'min' => 'يجب أن يكون طول :attribute على الأقل 3 أحرف.',
             'max' => 'يجب الا يكون طول :attribute على اكتر من 255 أحرف.'
 
         ],
-        'category_name_ar'=>[
+        'category_name_ar' => [
             'min' => 'يجب أن يكون طول :attribute على الأقل 3 أحرف.',
             'max' => 'يجب الا يكون طول :attribute على اكتر من 255 أحرف.'
 
