@@ -14,7 +14,7 @@ class LoginAction
      * 
      * @return JsonResponse
      */
-    public function __invoke(LoginRequest $request)
+    public function __invoke(LoginRequest $request): JsonResponse
     {
         Auth::shouldUse(config('auth.user_session_login'));
 
@@ -27,6 +27,6 @@ class LoginAction
             return sendSuccessResponse($user, "login successfully");
         }
 
-        return sendErrorResponse('');
+        return sendErrorResponse(null,__('passwords.user'));
     }
 }

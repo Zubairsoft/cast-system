@@ -153,9 +153,15 @@ return [
     */
 
     'custom' => [
-        'attribute-name' => [
-            'rule-name' => 'custom-message',
+
+        'category_name_en' => [
+            'min' => 'the length of string should be :attribute at less 3 characters',
+            'max' => 'the length of string should not be :attribute more than 255 characters',
         ],
+        'category_name_en' => [
+            'min' => 'the length of string should be :attribute at less 3 characters',
+            'max' => 'the length of string should not be :attribute more than 255 characters',
+        ]
     ],
 
     /*
@@ -171,7 +177,9 @@ return [
 
     'attributes' => [
         'email' => 'Email',
-        'password' => 'Password'
+        'password' => 'Password',
+        'category_name_en' => 'Category Name En',
+        'category_name_ar' => 'Category Name Ar',
     ],
 
 ];

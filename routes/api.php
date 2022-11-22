@@ -60,7 +60,7 @@ Route::name('account.')->prefix('/account')->group(function () {
         )->name('reset');
     });
 
-    Route::group(['middleware' => 'auth:sanctum'], function () {
+    Route::group(['middleware' => ['auth:sanctum','verified']], function () {
         Route::get(
             'logout',
             LogoutController::class
@@ -72,3 +72,4 @@ Route::name('account.')->prefix('/account')->group(function () {
         )->name('me');
     });
 });
+
