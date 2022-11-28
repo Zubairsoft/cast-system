@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use Domains\Albums\Presenter\AlbumPresenter;
 use Illuminate\Database\Eloquent\Concerns\HasUuids;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
@@ -9,7 +10,7 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 class Album extends Model
 {
-    use HasFactory,HasUuids;
+    use HasFactory,HasUuids,AlbumPresenter;
 
     protected $fillable=[
         'name_en',

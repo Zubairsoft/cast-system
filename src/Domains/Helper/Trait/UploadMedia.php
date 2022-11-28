@@ -6,6 +6,14 @@ use ErrorException;
 
 trait UploadMedia
 {
+    /**
+     * function that save image
+     * 
+     * @param mixed $image_request 
+     * @param string $path 
+     * 
+     * @return string
+     */
     private function uploadImage($image_request, $path = '')
     {
 

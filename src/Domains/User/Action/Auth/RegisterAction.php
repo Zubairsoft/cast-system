@@ -4,10 +4,12 @@ namespace Domains\User\Action\Auth;
 
 use App\Http\Requests\Users\Account\Auth\RegisterRequest;
 use App\Models\User;
+use Domains\Helper\Trait\UploadMedia;
 use Illuminate\Http\JsonResponse;
 
 class RegisterAction
 {
+    use UploadMedia;
 
     /**
      * @param RegisterRequest $request
@@ -18,15 +20,10 @@ class RegisterAction
     {
         $attributes = $request->validated();
 
-        if (is_file($request->avatar)) {
-            $attributes['avatar'] = $request->avatar->storePublicly('Users/avatar');
-        }
-
-        $attributes['avatar'] = $attributes['avatar'] ?? 'default.png';
-
+        $attributes['avatar'] = $this->uploadImage($request->avatar,'Users/avatar');
+    
         $data = User::create($attributes);
 
         return $data;
-
     }
 }

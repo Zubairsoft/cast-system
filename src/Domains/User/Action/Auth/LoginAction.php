@@ -27,6 +27,6 @@ class LoginAction
             return sendSuccessResponse($user, "login successfully");
         }
 
-        return sendErrorResponse(null,__('passwords.user'));
+        return sendErrorResponse(null,__('passwords.user'),422);
     }
 }

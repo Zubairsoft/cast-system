@@ -12,12 +12,11 @@ use Illuminate\Notifications\Notifiable;
 use Illuminate\Support\Facades\Hash;
 use Laravel\Sanctum\HasApiTokens;
 use Domains\User\Trait\Account\AccountVerification;
-use Illuminate\Database\Eloquent\Concerns\HasUuids;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 
 class User extends Authenticatable implements MustVerifyEmail
 {
-    use HasApiTokens, HasFactory, HasUuids, Notifiable, AccountVerification;
+    use HasApiTokens, HasFactory, Notifiable, AccountVerification;
 
     /**
      * The attributes that are mass assignable.
@@ -29,6 +28,7 @@ class User extends Authenticatable implements MustVerifyEmail
         'username',
         'email',
         'avatar',
+        'role',
         'password',
         'is_active'
     ];

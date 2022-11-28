@@ -22,7 +22,7 @@ class AdminSeeder extends Seeder
             'name' => 'admin',
             'username' => 'admin',
             'email' => 'admin@cast.app',
-            'password' => Hash::make(defaultPassword()),
+            'password' => defaultPassword(),
             'email_verified_at' => Carbon::now(),
             'avatar' => 'default.png',
             'is_active' => true

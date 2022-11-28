@@ -12,9 +12,10 @@ trait HasDefaultAccount
 
     private function defaultAccounts()
     {
+        $counter=2;
         return  [
             [
-                'id' => uuid_create(),
+                'id'=>$counter++,
                 'name' => 'mohammed zubair',
                 'username' => 'mohammed777',
                 'email' => 'mohammed@soft.com',
@@ -25,7 +26,7 @@ trait HasDefaultAccount
             ],
 
             [
-                'id' => uuid_create(),
+                'id' => $counter++,
                 'name' => 'omar alhamdi',
                 'username' => 'omar88',
                 'email' => 'omar@soft.com',
