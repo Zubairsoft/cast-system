@@ -4,6 +4,7 @@ namespace Domains\User\Action\Auth;
 
 use App\Http\Requests\Users\Account\Auth\LoginRequest;
 use Auth;
+use Domains\User\Action\Auth\AccessToken\CreateAccessToken;
 use Illuminate\Http\JsonResponse;
 
 class LoginAction
@@ -22,7 +23,11 @@ class LoginAction
 
             $user = Auth::user();
 
-            $user['token'] = $user->createToken('user token')->plainTextToken;
+            if (!$user->isAccountVerify()) {
+                return sendErrorResponse(null,__('auth.not_activated_account'),422);
+            }
+
+            $user =(new CreateAccessToken)($user);
 
             return sendSuccessResponse($user, "login successfully");
         }

@@ -11,7 +11,7 @@ class LogoutAction
      */
     public function __invoke():void
     {
-        Auth::user()->tokens()->delete();
+        Auth::user()->currentAccessToken()->delete();
 
     }
 

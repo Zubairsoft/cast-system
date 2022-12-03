@@ -1,11 +1,14 @@
 <?php
 
+use App\Http\Controllers\Api\v1\Users\Account\Companies\Auth\loginController as AuthLoginController;
+use App\Http\Controllers\Api\v1\Users\Account\Companies\Auth\LogoutController as AuthLogoutController;
+use App\Http\Controllers\Api\v1\Users\Account\Companies\Auth\RegisterController as AuthRegisterController;
 use App\Http\Controllers\Api\v1\Users\Account\Password\ForgetPasswordController;
 use App\Http\Controllers\Api\v1\Users\Account\Password\ResetPasswordController;
 
-use App\Http\Controllers\Api\v1\Users\Account\Auth\LoginController;
-use App\Http\Controllers\Api\v1\Users\Account\Auth\LogoutController;
-use App\Http\Controllers\Api\v1\Users\Account\Auth\RegisterController;
+use App\Http\Controllers\Api\v1\Users\Account\Users\Auth\LoginController;
+use App\Http\Controllers\Api\v1\Users\Account\Users\Auth\LogoutController;
+use App\Http\Controllers\Api\v1\Users\Account\Users\Auth\RegisterController;
 use App\Http\Controllers\Api\v1\Users\Account\Profile\ProfileController;
 use App\Http\Controllers\Api\v1\Users\Account\Verification\SendVerificationCodeController;
 use App\Http\Controllers\Api\v1\Users\Account\Verification\VerificationCodeController;
@@ -27,6 +30,25 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
 Route::name('account.')->prefix('/account')->group(function () {
+
+    Route::name('company.')->prefix('company')->group(function () {
+        Route::post(
+            '/register',
+            AuthRegisterController::class
+        )->name('register');
+
+        Route::post(
+            '/login',
+            AuthLoginController::class
+        )->name('login');
+
+        Route::middleware('auth:sanctum')->group(function () {
+            Route::get(
+                'logout',
+                AuthLogoutController::class
+            )->name('logout');
+        });
+    });
 
     Route::post(
         'register',
@@ -60,7 +82,7 @@ Route::name('account.')->prefix('/account')->group(function () {
         )->name('reset');
     });
 
-    Route::group(['middleware' => ['auth:sanctum','verified']], function () {
+    Route::group(['middleware' => ['auth:sanctum', 'verified']], function () {
         Route::get(
             'logout',
             LogoutController::class
@@ -72,4 +94,3 @@ Route::name('account.')->prefix('/account')->group(function () {
         )->name('me');
     });
 });
-

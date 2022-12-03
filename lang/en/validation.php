@@ -180,7 +180,12 @@ return [
         'password' => 'Password',
         'category_name_en' => 'Category Name En',
         'category_name_ar' => 'Category Name Ar',
-        'username' => 'UserName'
+        'username' => 'UserName',
+        'name' => 'Name',
+        'company_name' => 'Company Name',
+        'address' => 'Address',
+        'license_document' => 'License Document',
+        'account_type' => 'Account Type',
     ],
 
 ];

@@ -12,11 +12,13 @@ use Illuminate\Notifications\Notifiable;
 use Illuminate\Support\Facades\Hash;
 use Laravel\Sanctum\HasApiTokens;
 use Domains\User\Trait\Account\AccountVerification;
+use Domains\User\Trait\Account\HasRole;
 use Illuminate\Database\Eloquent\Relations\HasMany;
+use Illuminate\Database\Eloquent\Relations\HasOne;
 
 class User extends Authenticatable implements MustVerifyEmail
 {
-    use HasApiTokens, HasFactory, Notifiable, AccountVerification;
+    use HasApiTokens, HasFactory, Notifiable, AccountVerification,HasRole;
 
     /**
      * The attributes that are mass assignable.
@@ -30,7 +32,7 @@ class User extends Authenticatable implements MustVerifyEmail
         'avatar',
         'role',
         'password',
-        'is_active'
+        'status'
     ];
 
     /**
@@ -50,13 +52,17 @@ class User extends Authenticatable implements MustVerifyEmail
      */
     protected $casts = [
         'email_verified_at' => 'datetime',
-        'is_active' => 'boolean'
-
+        'status' => 'string'
     ];
 
-    public function albums():HasMany
+    public function albums(): HasMany
     {
         return $this->hasMany(Album::class);
+    }
+
+    public function company(): HasOne
+    {
+        return $this->hasOne(Company::class,'representative_id');
     }
 
     public function setPasswordAttribute($value)

@@ -4,6 +4,8 @@ namespace Database\Seeders;
 
 use App\Models\User;
 use Carbon\Carbon;
+use Domains\User\Enums\Role;
+use Domains\User\Enums\Status;
 use Hash;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
@@ -24,8 +26,9 @@ class AdminSeeder extends Seeder
             'email' => 'admin@cast.app',
             'password' => defaultPassword(),
             'email_verified_at' => Carbon::now(),
+            'role'=>Role::ADMIN,
             'avatar' => 'default.png',
-            'is_active' => true
+            'status' => Status::ACTIVE
 
         ];
 

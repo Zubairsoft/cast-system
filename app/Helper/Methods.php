@@ -9,3 +9,14 @@ function defaultPassword()
 {
     return "123456";
 }
+
+function unsetEmptyParam(array|object $data)
+{
+    foreach ($data as $key => $value) {
+        if (is_null($value)) {
+           unset($data[$key]);
+        }
+    }
+
+    return $data;
+}

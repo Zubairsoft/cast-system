@@ -26,10 +26,16 @@ class VerificationCodeController extends Controller
             return sendErrorResponse(null,__('auth.user_not_found'));
         }
 
+
+
         if ($user->isAccountVerify()) {
             $otpVerification->delete();
             return sendErrorResponse(null,__('auth.already_verified'),422);
+        }
 
+        if ($user->isCompany()) {
+
+            $user->markCompanyAsActive();
         }
 
         $user->markAccountAsVerify();
@@ -39,10 +45,5 @@ class VerificationCodeController extends Controller
         // todo send email notification
 
         return sendSuccessResponse(null,__('auth.email_verified'));
-
-
-
-
-
     }
 }

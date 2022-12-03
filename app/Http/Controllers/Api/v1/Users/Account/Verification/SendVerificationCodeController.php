@@ -17,7 +17,7 @@ class SendVerificationCodeController extends Controller
 
         OtpVerification::generateOtpVerificationCode($user->email);
 
-        // Todo send email notification
+        // TODO send email notification
 
         return sendSuccessResponse(null,__('auth.send_verification_code'));
     }

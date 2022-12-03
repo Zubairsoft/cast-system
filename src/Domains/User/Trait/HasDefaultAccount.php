@@ -4,6 +4,7 @@ namespace Domains\User\Trait;
 
 
 use Carbon\Carbon;
+use Domains\User\Enums\Status;
 use Illuminate\Support\Arr;
 use Illuminate\Support\Facades\Hash;
 
@@ -22,7 +23,7 @@ trait HasDefaultAccount
                 'password' => Hash::make(defaultPassword()),
                 'email_verified_at' => Carbon::now(),
                 'avatar' => 'default.png',
-                'is_active' => Arr::random([true, false])
+                'status' => Arr::random([Status::BLOCKED,Status::ACTIVE])
             ],
 
             [
@@ -33,7 +34,7 @@ trait HasDefaultAccount
                 'password' => Hash::make(defaultPassword()),
                 'email_verified_at' => Carbon::now(),
                 'avatar' => 'default.png',
-                'is_active' => Arr::random([true, false])
+                'status' => Arr::random([Status::BLOCKED,Status::ACTIVE])
             ]
         ];
     }

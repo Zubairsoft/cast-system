@@ -132,6 +132,12 @@ return [
         'category_name_en' => 'اسم الفئة بالانجليزي',
         'category_name_ar' => 'اسم الفئة بالعربي',
         'username' => 'اسم المستخدم',
+        'name' => 'الاسم',
+        'company_name' => 'اسم الشركة',
+        'address' => 'العنوان',
+        'license_document' => 'الترخيص',
+        'account_type' => 'نوع الحساب',
+
     ],
 
 
