@@ -1,8 +1,8 @@
 <?php
 
-namespace App\Http\Controllers\Api\v1\Dashboard\Albums\Companies;
+namespace App\Http\Controllers\Api\v1\Dashboard\Companies\Albums;
 
-use App\Http\Requests\Dashboard\Albums\StoreAlbumRequest;
+use App\Http\Requests\Dashboard\Companies\Albums\StoreAlbumRequest;
 use App\Models\Category;
 use Illuminate\Http\JsonResponse;
 

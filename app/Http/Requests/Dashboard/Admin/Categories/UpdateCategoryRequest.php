@@ -1,13 +1,12 @@
 <?php
 
-namespace App\Http\Requests\Dashboard\Albums;
+namespace App\Http\Requests\Dashboard\Admin\Categories;
 
 use Illuminate\Contracts\Validation\Validator;
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Http\Exceptions\HttpResponseException;
-use Illuminate\Validation\Rule;
 
-class UpdateAlbumRequest extends FormRequest
+class UpdateCategoryRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -27,20 +26,16 @@ class UpdateAlbumRequest extends FormRequest
     public function rules()
     {
         return [
-            'album_name_en' => [
+            'category_name_en' => [
+                'string',
                 'min:3',
-                'max:255',
+            'max:255'
             ],
-            'album_name_en' => [
+            'category_name_ar' => [
+                'string',
                 'min:3',
-                'max:255',
+                'max:255'
             ],
-            'is_active' => [
-                'boolean'
-            ],
-            'category' => [
-                Rule::exists('categories', 'id')
-            ]
         ];
     }
 

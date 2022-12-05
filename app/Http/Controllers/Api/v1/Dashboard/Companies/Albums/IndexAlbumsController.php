@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\Api\v1\Dashboard\Albums\Companies;
+namespace App\Http\Controllers\Api\v1\Dashboard\Companies\Albums;
 
 use App\Http\Controllers\Controller;
 use App\Models\Album;

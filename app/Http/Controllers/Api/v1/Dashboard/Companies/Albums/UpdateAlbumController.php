@@ -1,9 +1,9 @@
 <?php
 
-namespace App\Http\Controllers\Api\v1\Dashboard\Albums\Companies;
+namespace App\Http\Controllers\Api\v1\Dashboard\Companies\Albums;
 
 use App\Http\Controllers\Controller;
-use App\Http\Requests\Dashboard\Albums\UpdateAlbumRequest;
+use App\Http\Requests\Dashboard\Companies\Albums\UpdateAlbumRequest;
 use App\Models\Album;
 use Illuminate\Http\JsonResponse;
 

@@ -1,12 +1,13 @@
 <?php
 
-namespace App\Http\Requests\Categories;
+namespace App\Http\Requests\Dashboard\Admin\Categories;
 
+use File;
 use Illuminate\Contracts\Validation\Validator;
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Http\Exceptions\HttpResponseException;
 
-class UpdateCategoryRequest extends FormRequest
+class StoreCategoryRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -27,11 +28,13 @@ class UpdateCategoryRequest extends FormRequest
     {
         return [
             'category_name_en' => [
+                'required',
                 'string',
                 'min:3',
             'max:255'
             ],
             'category_name_ar' => [
+                'required',
                 'string',
                 'min:3',
                 'max:255'
@@ -39,8 +42,8 @@ class UpdateCategoryRequest extends FormRequest
         ];
     }
 
-     protected function failedValidation(Validator $validator)
+    protected function failedValidation(Validator $validator)
     {
-        throw new HttpResponseException(sendErrorResponse(null,$validator->errors()->first(),422));
+        throw new HttpResponseException(sendErrorResponse(null, $validator->errors()->first(), 422));
     }
 }

@@ -1,9 +1,9 @@
 <?php
 
-namespace App\Http\Controllers\Api\v1\Dashboard\Categories;
+namespace App\Http\Controllers\Api\v1\Dashboard\Admin\Categories;
 
 use App\Http\Controllers\Controller;
-use App\Http\Requests\Categories\StoreCategoryRequest;
+use App\Http\Requests\Dashboard\Admin\Categories\StoreCategoryRequest;
 use Domains\Categories\Action\StoreCategoryAction;
 use Illuminate\Http\JsonResponse;
 

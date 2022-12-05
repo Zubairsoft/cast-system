@@ -2,7 +2,7 @@
 
 namespace Domains\User\Action\Auth;
 
-use App\Http\Requests\Users\Account\Auth\LoginRequest;
+use App\Http\Requests\Users\Account\Users\Auth\LoginRequest;
 use Auth;
 use Domains\User\Action\Auth\AccessToken\CreateAccessToken;
 use Illuminate\Http\JsonResponse;

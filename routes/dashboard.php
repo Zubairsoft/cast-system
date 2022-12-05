@@ -1,20 +1,23 @@
 <?php
 
-use App\Http\Controllers\Api\v1\Dashboard\Albums\Companies\IndexAlbumsController;
-use App\Http\Controllers\Api\v1\Dashboard\Albums\Companies\StoreAlbumController;
-use App\Http\Controllers\Api\v1\Dashboard\Albums\Companies\UpdateAlbumController;
-use App\Http\Controllers\Api\v1\Dashboard\Categories\DestroyCategoryController;
-use App\Http\Controllers\Api\v1\Dashboard\Categories\IndexCategoryController;
-use App\Http\Controllers\Api\v1\Dashboard\Categories\ShowCategoryController;
-use App\Http\Controllers\Api\v1\Dashboard\Categories\StoreCategoryController;
-use App\Http\Controllers\Api\v1\Dashboard\Categories\UpdateCategoryController;
+use App\Http\Controllers\Api\v1\Dashboard\Companies\Albums\IndexAlbumsController;
+use App\Http\Controllers\Api\v1\Dashboard\Companies\Albums\StoreAlbumController;
+use App\Http\Controllers\Api\v1\Dashboard\Companies\Albums\UpdateAlbumController;
+use App\Http\Controllers\Api\v1\Dashboard\Admin\Categories\DestroyCategoryController;
+use App\Http\Controllers\Api\v1\Dashboard\Admin\Categories\IndexCategoryController;
+use App\Http\Controllers\Api\v1\Dashboard\Admin\Categories\ShowCategoryController;
+use App\Http\Controllers\Api\v1\Dashboard\Admin\Categories\StoreCategoryController;
+use App\Http\Controllers\Api\v1\Dashboard\Admin\Categories\UpdateCategoryController;
 
 /**
  * here we define routes for dashboard
  */
 
 Route::name('dashboard.')->prefix('dashboard')->group(function () {
-    Route::name('admin.')->prefix('admin')->group(function () {
+    Route::name('admin.')->middleware('role:ADMIN')->prefix('admin')->group(function () {
+        Route::name('company.')->prefix('company')->group(function(){
+            
+        });
         Route::name('category.')->prefix('category')->group(function () {
 
             Route::get(
@@ -43,7 +46,7 @@ Route::name('dashboard.')->prefix('dashboard')->group(function () {
             )->name('destroy');
         });
     });
-    Route::name('company.')->prefix('company')->group(function () {
+    Route::name('company.')->middleware('role:COMPANY|ADMIN')->prefix('company')->group(function () {
         Route::name('album.')->prefix('album')->group(function () {
             Route::get(
                 '/',

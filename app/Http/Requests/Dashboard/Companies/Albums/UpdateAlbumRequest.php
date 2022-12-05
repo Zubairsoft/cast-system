@@ -1,13 +1,13 @@
 <?php
 
-namespace App\Http\Requests\Categories;
+namespace App\Http\Requests\Dashboard\Companies\Albums;
 
-use File;
 use Illuminate\Contracts\Validation\Validator;
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Http\Exceptions\HttpResponseException;
+use Illuminate\Validation\Rule;
 
-class StoreCategoryRequest extends FormRequest
+class UpdateAlbumRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -27,23 +27,25 @@ class StoreCategoryRequest extends FormRequest
     public function rules()
     {
         return [
-            'category_name_en' => [
-                'required',
-                'string',
+            'album_name_en' => [
                 'min:3',
-            'max:255'
+                'max:255',
             ],
-            'category_name_ar' => [
-                'required',
-                'string',
+            'album_name_en' => [
                 'min:3',
-                'max:255'
+                'max:255',
             ],
+            'is_active' => [
+                'boolean'
+            ],
+            'category' => [
+                Rule::exists('categories', 'id')
+            ]
         ];
     }
 
-    protected function failedValidation(Validator $validator)
+     protected function failedValidation(Validator $validator)
     {
-        throw new HttpResponseException(sendErrorResponse(null, $validator->errors()->first(), 422));
+        throw new HttpResponseException(sendErrorResponse(null,$validator->errors()->first(),422));
     }
 }

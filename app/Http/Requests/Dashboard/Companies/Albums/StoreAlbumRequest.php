@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Requests\Dashboard\Albums;
+namespace App\Http\Requests\Dashboard\Companies\Albums;
 
 use Illuminate\Contracts\Validation\Validator;
 use Illuminate\Foundation\Http\FormRequest;

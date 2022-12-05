@@ -2,7 +2,7 @@
 
 namespace Domains\Categories\Action;
 
-use App\Http\Requests\Categories\StoreCategoryRequest;
+use App\Http\Requests\Dashboard\Admin\Categories\StoreCategoryRequest;
 use App\Models\Category;
 use Domains\Helper\Trait\UploadMedia;
 

@@ -21,4 +21,9 @@ trait HasRole
     {
         return $this->role === Role::USER;
     }
+
+    public function hasRole(String $role):bool
+    {
+        return $this->role===$role;
+    }
 }

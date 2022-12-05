@@ -2,7 +2,7 @@
 
 namespace Domains\User\Action\Auth;
 
-use App\Http\Requests\Users\Account\Auth\RegisterRequest;
+use App\Http\Requests\Users\Account\Users\Auth\RegisterRequest;
 use App\Models\User;
 use Domains\Helper\Trait\UploadMedia;
 use Illuminate\Http\JsonResponse;
