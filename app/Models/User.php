@@ -35,7 +35,7 @@ class User extends Authenticatable implements MustVerifyEmail
         'status'
     ];
 
-    /**
+    /**p
      * The attributes that should be hidden for serialization.
      *
      * @var array<int, string>

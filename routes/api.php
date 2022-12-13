@@ -12,6 +12,7 @@ use App\Http\Controllers\Api\v1\Users\Account\Users\Auth\RegisterController;
 use App\Http\Controllers\Api\v1\Users\Account\Profile\ProfileController;
 use App\Http\Controllers\Api\v1\Users\Account\Verification\SendVerificationCodeController;
 use App\Http\Controllers\Api\v1\Users\Account\Verification\VerificationCodeController;
+use App\Http\Controllers\CarbonTutorialController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -26,9 +27,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
-    return $request->user();
-});
+Route::get('carbon',CarbonTutorialController::class);
 Route::name('account.')->prefix('/account')->group(function () {
 
     Route::name('company.')->prefix('company')->group(function () {

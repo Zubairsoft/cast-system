@@ -8,15 +8,25 @@ use App\Http\Controllers\Api\v1\Dashboard\Admin\Categories\IndexCategoryControll
 use App\Http\Controllers\Api\v1\Dashboard\Admin\Categories\ShowCategoryController;
 use App\Http\Controllers\Api\v1\Dashboard\Admin\Categories\StoreCategoryController;
 use App\Http\Controllers\Api\v1\Dashboard\Admin\Categories\UpdateCategoryController;
+use App\Http\Controllers\Api\v1\Dashboard\Admin\Companies\IndexCompanyController;
+use App\Http\Controllers\Api\v1\Dashboard\Admin\Companies\ShowCompanyController;
 
 /**
  * here we define routes for dashboard
  */
 
 Route::name('dashboard.')->prefix('dashboard')->group(function () {
-    Route::name('admin.')->middleware('role:ADMIN')->prefix('admin')->group(function () {
-        Route::name('company.')->prefix('company')->group(function(){
-            
+    Route::name('admin.')->middleware('role:ADMIN|USER')->prefix('admin')->group(function () {
+        Route::name('company.')->prefix('company')->group(function () {
+            Route::get(
+                '/',
+                IndexCompanyController::class
+            )->name('index');
+
+            Route::get(
+                '/{id}',
+                ShowCompanyController::class
+            )->name('show');
         });
         Route::name('category.')->prefix('category')->group(function () {
 
@@ -53,24 +63,25 @@ Route::name('dashboard.')->prefix('dashboard')->group(function () {
                 IndexAlbumsController::class
             )->name('index');
 
-            Route::post('/',
-            StoreAlbumController::class
+            Route::post(
+                '/',
+                StoreAlbumController::class
             )->name('store');
 
-            Route::patch('/{album}',
-            UpdateAlbumController::class
+            Route::patch(
+                '/{album}',
+                UpdateAlbumController::class
             )->name('update');
 
-            Route::get('/{album}',
-            UpdateAlbumController::class
+            Route::get(
+                '/{album}',
+                UpdateAlbumController::class
             )->name('show');
 
-            Route::delete('/{id}',
-            UpdateAlbumController::class
+            Route::delete(
+                '/{id}',
+                UpdateAlbumController::class
             )->name('destroy');
-
-
-
         });
     });
 });
