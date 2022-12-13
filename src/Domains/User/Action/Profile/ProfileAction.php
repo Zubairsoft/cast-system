@@ -7,6 +7,9 @@ use Auth;
 
 class ProfileAction
 {
+    /**
+     * @return User
+     */
     public function __invoke():User
     {
         return Auth::user();

@@ -3,7 +3,7 @@
 namespace App\Http\Controllers\Api\v1\Users\Account\Profile;
 
 use App\Http\Controllers\Controller;
-use App\Http\Resources\Users\Account\Profile\ProfileResource;
+use App\Http\Resources\Users\Accounts\Profile\ProfileResource;
 use Auth;
 use Domains\User\Action\Profile\ProfileAction;
 use Illuminate\Http\JsonResponse;

@@ -27,7 +27,7 @@ class RouteServiceProvider extends ServiceProvider
     public function boot()
     {
         $this->configureRateLimiting();
-
+        $this->dashboardRouteMap();
         $this->apiRouteMap();
         $this->webRouteMap();
     }
@@ -37,6 +37,13 @@ class RouteServiceProvider extends ServiceProvider
         Route::middleware('api')
             ->prefix('api/'.'v'.config('app.version'))
             ->group(base_path('routes/api.php'));
+    }
+
+    protected function dashboardRouteMap()
+    {
+        Route::middleware(['api','auth:sanctum'])
+        ->prefix('api/'.'v'.config('app.version'))
+        ->group(base_path('routes/dashboard.php'));
     }
 
     protected function webRouteMap()
