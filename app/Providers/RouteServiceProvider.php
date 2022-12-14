@@ -35,15 +35,14 @@ class RouteServiceProvider extends ServiceProvider
     protected function apiRouteMap()
     {
         Route::middleware('api')
-            ->prefix('api/'.'v'.config('app.version'))
+            ->prefix('api/' . 'v' . config('app.version'))
             ->group(base_path('routes/api.php'));
     }
 
     protected function dashboardRouteMap()
     {
-        Route::middleware(['api','auth:sanctum'])
-        ->prefix('api/'.'v'.config('app.version'))
-        ->group(base_path('routes/dashboard.php'));
+        Route::prefix('api/' . 'v' . config('app.version'))
+            ->group(base_path('routes/dashboard.php'));
     }
 
     protected function webRouteMap()
