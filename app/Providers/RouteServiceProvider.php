@@ -42,6 +42,7 @@ class RouteServiceProvider extends ServiceProvider
     protected function dashboardRouteMap()
     {
         Route::prefix('api/' . 'v' . config('app.version'))
+            ->middleware('api')
             ->group(base_path('routes/dashboard.php'));
     }
 
