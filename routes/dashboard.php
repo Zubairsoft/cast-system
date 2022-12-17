@@ -12,6 +12,8 @@ use App\Http\Controllers\Api\v1\Dashboard\Admin\Categories\StoreCategoryControll
 use App\Http\Controllers\Api\v1\Dashboard\Admin\Categories\UpdateCategoryController;
 use App\Http\Controllers\Api\v1\Dashboard\Admin\Companies\IndexCompanyController;
 use App\Http\Controllers\Api\v1\Dashboard\Admin\Companies\ShowCompanyController;
+use App\Http\Controllers\Api\v1\Dashboard\Admin\Notification\IndexNotificationController;
+use App\Http\Controllers\Api\v1\Dashboard\Admin\Notification\ShowNotificationController;
 
 /**
  * here we define routes for dashboard
@@ -29,6 +31,15 @@ Route::name('dashboard.')->prefix('dashboard')->group(function () {
                 'logout',
                 LogoutController::class
             );
+            Route::name('notification.')->prefix('notifications')->group(function () {
+                Route::get(
+                    '/',
+                    IndexNotificationController::class
+                )->name('index');
+                Route::get('/{id}',
+                ShowNotificationController::class
+                )->name('show');
+            });
             Route::name('company.')->prefix('company')->group(function () {
                 Route::get(
                     '/',

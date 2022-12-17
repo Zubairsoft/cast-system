@@ -36,9 +36,8 @@ class RegisterController extends Controller
 
         OtpVerification::generateOtpVerificationCode($representative->email);
 
-        //TODO send email notification 
         $admin = User::query()->firstWhere('role', 'like', Role::ADMIN);
-        $admin->notify(new CompanyRegistered($company->name, $representative->email));
+        $admin->notify(new CompanyRegistered( $representative));
 
         return sendSuccessResponse(CompanyResource::make($company), __('auth.success_register'));
     }
