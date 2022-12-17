@@ -11,17 +11,16 @@ class CompanyRegistered extends Notification
 {
     use Queueable;
 
-    private $name;
-    private $email;
+    private $companyOwner;
+
     /**
      * Create a new notification instance.
      *
      * @return void
      */
-    public function __construct($name,$email)
+    public function __construct($representative)
     {
-        $this->name=$name;
-        $this->email=$email;
+        $this->companyOwner = $representative;
     }
 
     /**
@@ -32,7 +31,7 @@ class CompanyRegistered extends Notification
      */
     public function via($notifiable)
     {
-        return ['mail'];
+        return ['mail', 'database'];
     }
 
     /**
@@ -44,10 +43,10 @@ class CompanyRegistered extends Notification
     public function toMail($notifiable)
     {
         return (new MailMessage)
-                    ->subject('New Company Registered')        
-                    ->line('The Name of Company is '.$this->name)
-                    ->line('And The emil of Company is '.$this->email)
-                    ->action('Show Company', url('/'));
+            ->subject('New Company Registered')
+            ->line('The Name of Company is ' . $this->companyOwner->company->name)
+            ->line('And The emil of Company is ' . $this->companyOwner->email)
+            ->action('Show Company', route('dashboard.admin.company.show',$this->companyOwner->company->id));
     }
 
     /**
@@ -59,7 +58,9 @@ class CompanyRegistered extends Notification
     public function toArray($notifiable)
     {
         return [
-            //
+            'id'=>$this->companyOwner->id,
+            'company_name'=>$this->companyOwner->company->name,
+            'representative'=>$this->companyOwner->name,
         ];
     }
 }
