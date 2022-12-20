@@ -17,7 +17,6 @@ return new class extends Migration
             $table->uuid('id')->primary();
             $table->string('name_en');
             $table->string('name_ar');
-            $table->string('logo');
             $table->boolean('is_active')->default(false);
             $table->timestamps();
         });
