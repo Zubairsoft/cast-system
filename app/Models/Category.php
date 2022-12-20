@@ -12,7 +12,7 @@ use Illuminate\Database\Eloquent\Relations\MorphOne;
 
 class Category extends Model
 {
-    use HasFactory, CategoryPresenter, HasUuids,ToggleIsActiveTrait;
+    use HasFactory, CategoryPresenter, HasUuids, ToggleIsActiveTrait;
     protected $fillable = [
         'name_ar',
         'name_en',
@@ -33,6 +33,4 @@ class Category extends Model
     {
         return $this->morphOne(Image::class, 'imageable');
     }
-
-
 }
