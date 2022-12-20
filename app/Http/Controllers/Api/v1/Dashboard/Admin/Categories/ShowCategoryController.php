@@ -8,7 +8,7 @@ use Illuminate\Http\JsonResponse;
 
 class ShowCategoryController extends Controller
 {
-    public function __invoke(int $id) :JsonResponse
+    public function __invoke(string $id) :JsonResponse
     {
         $category=(new ShowCategoryAction)($id);
 

@@ -11,7 +11,7 @@ use Illuminate\Http\Request;
 class DestroyCategoryController extends Controller
 {
     
-    public function __invoke(int $id):JsonResponse
+    public function __invoke(string $id):JsonResponse
     {
         (new DestroyCategoryAction)($id);
         return sendSuccessResponse(null,__('messages.data-deleting'));
