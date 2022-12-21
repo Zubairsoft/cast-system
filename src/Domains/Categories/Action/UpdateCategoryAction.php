@@ -10,14 +10,22 @@ class UpdateCategoryAction
 {
     use UploadMedia;
 
-    public function __invoke(UpdateCategoryRequest $request, int $id): Category
+    /**
+     * Handel the incoming request for Update category
+     * 
+     * @param UpdateCategoryRequest $request
+     * @param string $id
+     * 
+     * @return Category
+     */
+    public function __invoke(UpdateCategoryRequest $request, string $id): Category
     {
         $category = Category::query()->findOrFail($id);
         $category->name_en = $request->input('category_name_en') ??  $category->name_en;
         $category->name_ar = $request->input('category_name_ar') ??  $category->name_ar;
         $category->is_active = $request->boolean('status') ??  $category->is_active;
         if (is_file($request->logo)) {
-            $category->logo = $this->uploadImage($request->logo);
+            $category->image()->update(['path' => $this->uploadImage($request->logo, 'Category/logo')]);
         }
         $category->save();
 

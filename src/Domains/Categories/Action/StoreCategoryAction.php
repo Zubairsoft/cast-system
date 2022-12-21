@@ -11,6 +11,8 @@ class StoreCategoryAction
     use UploadMedia;
 
     /**
+     * Handel the incoming request for store category
+     * 
      * @param StoreCategoryRequest $request
      * 
      * @return Category
@@ -21,9 +23,12 @@ class StoreCategoryAction
         $category = Category::create([
             'name_ar' => $request->category_name_ar,
             'name_en' => $request->category_name_en,
-            'logo' => $this->uploadImage($request->logo, 'category'),
-            'is_active'=>$request->boolean('status')
+            'is_active' => $request->boolean('status')
         ]);
+
+        $category->image()->create([
+            'path' => $this->uploadImage($request->logo, 'category/logo'),
+        ])->save();
 
         return $category;
     }

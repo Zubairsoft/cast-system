@@ -2,10 +2,11 @@
 
 namespace App\Http\Requests\Dashboard\Admin\Categories;
 
-use File;
 use Illuminate\Contracts\Validation\Validator;
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Http\Exceptions\HttpResponseException;
+use Illuminate\Validation\Rule;
+use Illuminate\Validation\Rules\File;
 
 class StoreCategoryRequest extends FormRequest
 {
@@ -31,7 +32,7 @@ class StoreCategoryRequest extends FormRequest
                 'required',
                 'string',
                 'min:3',
-            'max:255'
+                'max:255'
             ],
             'category_name_ar' => [
                 'required',
@@ -39,6 +40,14 @@ class StoreCategoryRequest extends FormRequest
                 'min:3',
                 'max:255'
             ],
+            'logo' => [
+                'nullable',
+                File::types(['png', 'jpg', 'jpeg'])->max(1024),
+            ],
+            'status' => [
+                'nullable',
+                Rule::in([true, false, 'on', 'off', 'yes', 'no', 1, 0])
+            ]
         ];
     }
 
