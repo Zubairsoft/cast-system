@@ -18,6 +18,10 @@ class UserSeeder extends Seeder
      */
     public function run()
     {
-        User::query()->insert($this->defaultAccounts());
+        collect($this->defaultAccounts())->each(function($user){
+             User::query()->create($user);
+        });
+        User::factory(20)->create();
+
     }
 }
