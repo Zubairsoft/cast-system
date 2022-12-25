@@ -14,6 +14,8 @@ use App\Http\Controllers\Api\v1\Dashboard\Admin\Companies\IndexCompanyController
 use App\Http\Controllers\Api\v1\Dashboard\Admin\Companies\ShowCompanyController;
 use App\Http\Controllers\Api\v1\Dashboard\Admin\Notification\IndexNotificationController;
 use App\Http\Controllers\Api\v1\Dashboard\Admin\Notification\ShowNotificationController;
+use Illuminate\Support\Facades\Route;
+
 
 /**
  * here we define routes for dashboard
