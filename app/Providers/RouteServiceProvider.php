@@ -30,6 +30,7 @@ class RouteServiceProvider extends ServiceProvider
         $this->dashboardRouteMap();
         $this->apiRouteMap();
         $this->webRouteMap();
+        $this->companyRouteMap();
     }
 
     protected function apiRouteMap()
@@ -61,5 +62,12 @@ class RouteServiceProvider extends ServiceProvider
         RateLimiter::for('api', function (Request $request) {
             return Limit::perMinute(60)->by($request->user()?->id ?: $request->ip());
         });
+    }
+
+    protected function companyRouteMap()
+    {
+        Route::prefix('api/' . 'v' . config('app.version'))
+            ->middleware('api')
+            ->group(base_path('routes/company.php'));
     }
 }
