@@ -10,9 +10,9 @@ use Illuminate\Http\JsonResponse;
 class ShowCompanyController extends Controller
 {
     //
-    public function __invoke(string $id):JsonResponse
+    public function __invoke(string $id): JsonResponse
     {
-        $company=Company::query()->findOrFail(id:$id);
-        return sendSuccessResponse(CompanyResource::make($company));
+        $company = Company::query()->findOrFail(id: $id);
+        return sendSuccessResponse(CompanyResource::make($company), __('messages.data-getting'));
     }
 }
