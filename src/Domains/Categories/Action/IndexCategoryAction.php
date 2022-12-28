@@ -2,8 +2,10 @@
 
 namespace Domains\Categories\Action;
 
+use App\Http\Resources\Dashboard\Admin\Categories\CategoryResource;
 use App\Models\Category;
 use illuminate\Http\Request;
+use Illuminate\Pagination\LengthAwarePaginator;
 
 class IndexCategoryAction
 {
@@ -12,9 +14,9 @@ class IndexCategoryAction
      * 
      * @param Request $request
      * 
-     * @return Category
+     * @return array
      */
-    public function __invoke(Request $request): Category
+    public function __invoke(Request $request): array
     {
         $perPage = $request->input('perPage') ?? 15;
         $sort = $request->input('sort') ?? 'desc';
@@ -27,6 +29,6 @@ class IndexCategoryAction
             $query->search($search_text);
         }
 
-        return $query->orderBy($sortBy, $sort)->with('image')->paginate($perPage);
+        return CategoryResource::collection($query->orderBy($sortBy, $sort)->with('image')->paginate($perPage))->appends($request->query())->toArray();
     }
 }
