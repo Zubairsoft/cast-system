@@ -7,7 +7,6 @@ use App\Http\Requests\Users\Account\Companies\Auth\LoginRequest;
 use Auth;
 use Domains\User\Enums\Role;
 use Illuminate\Http\JsonResponse;
-use Illuminate\Http\Request;
 
 class LoginController extends Controller
 {
