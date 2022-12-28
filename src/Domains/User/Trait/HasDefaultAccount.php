@@ -19,25 +19,23 @@ trait HasDefaultAccount
                 'name' => 'mohammed zubair',
                 'username' => 'mohammed777',
                 'email' => 'mohammed@soft.com',
-                'password' => Hash::make(defaultPassword()),
+                'password' => defaultPassword(),
                 'email_verified_at' => Carbon::now(),
                 'avatar' => 'default.png',
-                'status' => Arr::random([Status::BLOCKED,Status::ACTIVE]),
-                'role'=>Role::COMPANY
+                'status' => Status::ACTIVE,
+                'role' => Role::COMPANY
             ],
 
             [
                 'name' => 'omar alhamdi',
                 'username' => 'omar88',
                 'email' => 'omar@soft.com',
-                'password' => Hash::make(defaultPassword()),
-                'email_verified_at' => Carbon::now(),
+                'password' => defaultPassword(),
+                'email_verified_at' => null,
                 'avatar' => 'default.png',
-                'status' => Arr::random([Status::BLOCKED,Status::ACTIVE]),
-                'role'=>Role::COMPANY
+                'status' => Status::BLOCKED,
+                'role' => Role::COMPANY
             ]
         ];
     }
-
-    
 }
