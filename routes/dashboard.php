@@ -21,7 +21,7 @@ use Illuminate\Support\Facades\Route;
  * here we define routes for dashboard
  */
 
-Route::name('dashboard.')->prefix('dashboard')->group(function () {
+Route::name('dashboard.')->prefix('dashboard')->whereUuid(['id'])->group(function () {
     Route::name('admin.')->prefix('admin')->group(function () {
         Route::post(
             'login',
