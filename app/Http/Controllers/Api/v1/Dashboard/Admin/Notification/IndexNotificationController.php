@@ -11,8 +11,9 @@ class IndexNotificationController extends Controller
 {
     public function __invoke(): JsonResponse
     {
+        //TODO make resource for notification
         $admin = Auth::user();
-        $notifications = $admin->unreadNotifications ;
+        $notifications = $admin->notifications ;
         return sendSuccessResponse($notifications, __('messages.data-getting'));
     }
 }
