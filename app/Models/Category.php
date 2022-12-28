@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Domains\Categories\Presenter\CategoryPresenter;
 use Domains\Support\Traits\ToggleIsActiveTrait;
+use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Concerns\HasUuids;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
@@ -20,7 +21,7 @@ class Category extends Model
     ];
 
     protected $cast = [
-        'id' => 'integer',
+        'id' => 'string',
         'is_active' => 'boolean'
     ];
 
@@ -32,5 +33,14 @@ class Category extends Model
     public function image(): MorphOne
     {
         return $this->morphOne(Image::class, 'imageable');
+    }
+    
+    ########################### scopes  #####################3
+    public function scopeSearch(Builder $query, $text): Builder
+    {
+        return $query->where(function ($query) use ($text) {
+            $query->where('name_en', 'like', $text)
+                ->orWhere('name_ar', 'like', $text);
+        });
     }
 }
