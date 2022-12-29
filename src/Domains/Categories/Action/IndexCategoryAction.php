@@ -2,7 +2,7 @@
 
 namespace Domains\Categories\Action;
 
-use App\Http\Resources\Dashboard\Admin\Categories\CategoryResource;
+use App\Http\Resources\Dashboard\Admin\Categories\CategoriesResource;
 use App\Models\Category;
 use illuminate\Http\Request;
 use Illuminate\Pagination\LengthAwarePaginator;
@@ -29,6 +29,6 @@ class IndexCategoryAction
             $query->search($search_text);
         }
 
-        return CategoryResource::collection($query->orderBy($sortBy, $sort)->with('image')->paginate($perPage))->appends($request->query())->toArray();
+        return CategoriesResource::collection($query->orderBy($sortBy, $sort)->with('image')->paginate($perPage))->appends($request->query())->toArray();
     }
 }

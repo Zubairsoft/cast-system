@@ -18,7 +18,7 @@ return new class extends Migration
             $table->string('name_en');
             $table->string('name_ar');
             $table->boolean('is_active')->default(false);
-            $table->string('category_id');
+            $table->uuid('category_id');
             $table->unsignedBigInteger('creator_id');
 
             $table->foreign('category_id')->references('id')->on('categories')->onDelete('cascade');

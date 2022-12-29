@@ -30,10 +30,16 @@ trait CategoryPresenter
     // }
 
     // new way 
+    protected function name_en(): Attribute
+    {
+        return new Attribute(get:function(){
+             return strtoupper($this->name_en);
+        });
+    }
 
     protected function name(): Attribute
     {
-        return new Attribute(get: fn ($value, $attr) => app()->getLocale() === 'en' ? $attr['name_en'] : $attr['name_ar']);
+        return new Attribute(get: fn ($value, $attr) => app()->getLocale() === 'en' ? strtoupper($attr['name_en']) : $attr['name_ar']);
     }
 
     protected function status(): Attribute

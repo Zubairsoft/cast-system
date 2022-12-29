@@ -3,11 +3,9 @@
 namespace App\Http\Resources\Dashboard\Admin\Categories;
 
 use App\Http\Resources\Support\Images\ImageResource;
-use Illuminate\Contracts\Support\Arrayable;
 use Illuminate\Http\Resources\Json\JsonResource;
-use JsonSerializable;
 
-class CategoryResource extends JsonResource
+class CategoriesResource extends JsonResource
 {
     /**
      * Transform the resource into an array.
@@ -15,12 +13,11 @@ class CategoryResource extends JsonResource
      * @param  \Illuminate\Http\Request  $request
      * @return array|\Illuminate\Contracts\Support\Arrayable|\JsonSerializable
      */
-    public function toArray($request): array|Arrayable|JsonSerializable
+    public function toArray($request)
     {
         return [
             'id' => $this->id,
-            'name_ar' => $this->name_ar,
-            'name_en' => $this->name_en,
+            'name' => $this->name,
             'status' => $this->status,
             'image' => ImageResource::make($this->image),
         ];

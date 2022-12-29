@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Api\v1\Dashboard\Admin\Categories;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Dashboard\Admin\Categories\UpdateCategoryRequest;
+use App\Http\Resources\Dashboard\Admin\Categories\CategoriesResource;
 use Domains\Categories\Action\UpdateCategoryAction;
 use Illuminate\Http\JsonResponse;
 
@@ -22,6 +23,6 @@ class UpdateCategoryController extends Controller
     {
         $category = (new UpdateCategoryAction)($request, $id);
 
-        return sendSuccessResponse($category, __('messages.data-updating'));
+        return sendSuccessResponse(CategoriesResource::make($category), __('messages.data-updating'));
     }
 }

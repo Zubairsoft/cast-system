@@ -31,12 +31,14 @@ class StoreCategoryRequest extends FormRequest
             'category_name_en' => [
                 'required',
                 'string',
+                'regex:/^[a-zA-Z]+$/',
                 'min:3',
                 'max:255'
             ],
             'category_name_ar' => [
                 'required',
                 'string',
+                'regex:/^[\-_ \d\p{Arabic}]*\p{Arabic}[\d\p{Arabic}]*$/ui',
                 'min:3',
                 'max:255'
             ],
