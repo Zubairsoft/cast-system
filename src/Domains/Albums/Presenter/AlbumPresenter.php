@@ -2,23 +2,29 @@
 
 namespace Domains\Albums\Presenter;
 
-use Illuminate\Contracts\Database\Eloquent\Builder;
-use Illuminate\Support\Facades\Auth;
+use Illuminate\Database\Eloquent\Casts\Attribute;
 
 trait AlbumPresenter
 {
 
-    public function scopeBelongTOCompany(Builder $query): Builder
+    protected function name_en(): Attribute
     {
-        $company = Auth::user();
-        return $query->where('creator_id', $company->id);
+        return new Attribute(get: function () {
+            return strtoupper($this->name_en) ;
+        });
     }
 
-    public function scopeSearch(Builder $query, $value): Builder
+    protected function name(): Attribute
     {
-        return $query->where(function ($query) use ($value) {
-            $query->where('name_ar', 'like', $value)
-                ->orWhere('name_en', 'like', $value);
+        return new Attribute(get: function () {
+            return app()->getLocale() === 'ar' ? $this->name_ar : strtoupper($this->name_en);
+        });
+    }
+
+    protected function status():Attribute
+    {
+        return new Attribute(get:function(){
+            return $this->is_active? __('keywords.active'):__('keywords.dis_active');
         });
     }
 }

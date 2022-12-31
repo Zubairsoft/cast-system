@@ -4,11 +4,13 @@ namespace App\Models;
 
 use Domains\Albums\Presenter\AlbumPresenter;
 use Domains\Support\Traits\ToggleIsActiveTrait;
+use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Concerns\HasUuids;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\MorphOne;
+use Illuminate\Support\Facades\Auth;
 
 class Album extends Model
 {
@@ -24,6 +26,8 @@ class Album extends Model
 
     protected $cast = [
         'is_active' => 'boolean',
+        'creator_id'=>'integer',
+        'category_id'=>'string',
     ];
 
     public function category(): BelongsTo
@@ -39,5 +43,21 @@ class Album extends Model
     public function image(): MorphOne
     {
         return $this->morphOne(Image::class, 'imageable');
+    }
+
+    ########################## scopes #############################################
+
+    public function scopeBelongTOCompany(Builder $query): Builder
+    {
+        $company = Auth::user();
+        return $query->where('creator_id', $company->id);
+    }
+
+    public function scopeSearch(Builder $query, $value): Builder
+    {
+        return $query->where(function ($query) use ($value) {
+            $query->where('name_ar', 'like', $value)
+                ->orWhere('name_en', 'like', $value);
+        });
     }
 }

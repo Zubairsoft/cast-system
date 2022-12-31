@@ -30,11 +30,13 @@ class StoreAlbumRequest extends FormRequest
             'album_name_en' => [
                 'required',
                 'min:3',
+                'regex:/^[a-zA-Z0-9 ]+$/',
                 'max:255',
             ],
-            'album_name_en' => [
+            'album_name_ar' => [
                 'required',
                 'min:3',
+                'regex:/^[\-_ \d\p{Arabic}]*\p{Arabic}[\d\p{Arabic}]*$/ui',
                 'max:255',
             ],
             'is_active' => [

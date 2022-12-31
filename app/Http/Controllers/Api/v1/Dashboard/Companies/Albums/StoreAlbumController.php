@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Api\v1\Dashboard\Companies\Albums;
 
 use App\Http\Requests\Dashboard\Companies\Albums\StoreAlbumRequest;
+use App\Http\Resources\Dashboard\Companies\Albums\AlbumResource;
 use App\Models\Category;
 use Illuminate\Http\JsonResponse;
 
@@ -19,6 +20,6 @@ class StoreAlbumController
             'creator_id' => $request->user()->id,
         ]);
 
-        return sendSuccessResponse($album, __('messages.data-storing'));
+        return sendSuccessResponse(AlbumResource::make($album), __('messages.data-storing'));
     }
 }

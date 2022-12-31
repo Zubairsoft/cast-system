@@ -9,7 +9,7 @@ use Illuminate\Http\JsonResponse;
 class DestroyAlbumController extends Controller
 {
 
-    public function __invoke(int $id): JsonResponse
+    public function __invoke(string $id): JsonResponse
     {
         $album = Album::query()->findOrFail($id);
         $album->delete();

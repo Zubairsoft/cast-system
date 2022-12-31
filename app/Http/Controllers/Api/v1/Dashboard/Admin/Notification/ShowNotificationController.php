@@ -10,6 +10,7 @@ class ShowNotificationController extends Controller
 {
     public function __invoke(string $id)
     {
+        //TODO MAKE RESOURCE
         $admin=Auth::user();
         $notification=$admin->notifications()->findOrFail($id);
         $notification->markAsRead();

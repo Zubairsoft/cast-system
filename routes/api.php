@@ -1,6 +1,6 @@
 <?php
 
-use App\Http\Controllers\Api\v1\Users\Account\Companies\Auth\loginController as AuthLoginController;
+
 use App\Http\Controllers\Api\v1\Users\Account\Companies\Auth\LogoutController as AuthLogoutController;
 use App\Http\Controllers\Api\v1\Users\Account\Companies\Auth\RegisterController as AuthRegisterController;
 use App\Http\Controllers\Api\v1\Users\Account\Password\ForgetPasswordController;
@@ -12,8 +12,7 @@ use App\Http\Controllers\Api\v1\Users\Account\Users\Auth\RegisterController;
 use App\Http\Controllers\Api\v1\Users\Account\Profile\ProfileController;
 use App\Http\Controllers\Api\v1\Users\Account\Verification\SendVerificationCodeController;
 use App\Http\Controllers\Api\v1\Users\Account\Verification\VerificationCodeController;
-use App\Http\Controllers\CarbonTutorialController;
-use Illuminate\Http\Request;
+
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -27,27 +26,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('carbon',CarbonTutorialController::class);
 Route::name('account.')->prefix('/account')->group(function () {
-
-    Route::name('company.')->prefix('company')->group(function () {
-        Route::post(
-            '/register',
-            AuthRegisterController::class
-        )->name('register');
-
-        Route::post(
-            '/login',
-            AuthLoginController::class
-        )->name('login');
-
-        Route::middleware('auth:sanctum')->group(function () {
-            Route::get(
-                'logout',
-                AuthLogoutController::class
-            )->name('logout');
-        });
-    });
 
     Route::post(
         'register',

@@ -14,12 +14,16 @@ use App\Http\Controllers\Api\v1\Dashboard\Admin\Companies\IndexCompanyController
 use App\Http\Controllers\Api\v1\Dashboard\Admin\Companies\ShowCompanyController;
 use App\Http\Controllers\Api\v1\Dashboard\Admin\Notification\IndexNotificationController;
 use App\Http\Controllers\Api\v1\Dashboard\Admin\Notification\ShowNotificationController;
+use App\Http\Controllers\Api\v1\Dashboard\Companies\Albums\DestroyAlbumController;
+use App\Http\Controllers\Api\v1\Dashboard\Companies\Albums\ShowAlbumController;
+use Illuminate\Support\Facades\Route;
+
 
 /**
  * here we define routes for dashboard
  */
 
-Route::name('dashboard.')->prefix('dashboard')->group(function () {
+Route::name('dashboard.')->prefix('dashboard')->whereUuid(['id'])->group(function () {
     Route::name('admin.')->prefix('admin')->group(function () {
         Route::post(
             'login',
@@ -101,12 +105,12 @@ Route::name('dashboard.')->prefix('dashboard')->group(function () {
 
                 Route::get(
                     '/{album}',
-                    UpdateAlbumController::class
+                    ShowAlbumController::class
                 )->name('show');
 
                 Route::delete(
                     '/{id}',
-                    UpdateAlbumController::class
+                    DestroyAlbumController::class
                 )->name('destroy');
             });
         });

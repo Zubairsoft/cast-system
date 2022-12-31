@@ -28,17 +28,21 @@ class UpdateAlbumRequest extends FormRequest
     {
         return [
             'album_name_en' => [
+                'nullable',
                 'min:3',
                 'max:255',
             ],
             'album_name_en' => [
+                'nullable',
                 'min:3',
                 'max:255',
             ],
             'is_active' => [
+                'nullable',
                 'boolean'
             ],
             'category' => [
+                'nullable',
                 Rule::exists('categories', 'id')
             ]
         ];
