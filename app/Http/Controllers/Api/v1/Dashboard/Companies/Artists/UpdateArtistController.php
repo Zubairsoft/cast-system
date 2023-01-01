@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Api\v1\Dashboard\Companies\Artists;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Dashboard\Companies\Artists\UpdateArtistRequest;
+use Domains\Artists\Actions\UpdateArtistAction;
 use Domains\Artists\DTO\ArtistData;
 use Domains\Helper\Trait\UploadMedia;
 use Illuminate\Http\JsonResponse;
@@ -16,17 +17,7 @@ class UpdateArtistController extends Controller
 
     public function __invoke(UpdateArtistRequest $request, string $id): JsonResponse
     {
-        $attributes = unsetEmptyParam(ArtistData::fromRequest($request)->toArray());
-
-        $company = Auth::user()->company;
-        $artist = $company->artists()->findOrFail($id);
-        $artist->update($attributes);
-
-        if ($request->image?->isFile()) {
-            $artist->image()->update(
-                ['path' => $this->uploadImage($request->image, 'Artist')]
-            );
-        }
+       (new UpdateArtistAction)($request,$id);
 
         return sendSuccessResponse(null, __('messages.data-updating'));
     }
