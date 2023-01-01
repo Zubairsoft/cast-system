@@ -16,6 +16,11 @@ use App\Http\Controllers\Api\v1\Dashboard\Admin\Notification\IndexNotificationCo
 use App\Http\Controllers\Api\v1\Dashboard\Admin\Notification\ShowNotificationController;
 use App\Http\Controllers\Api\v1\Dashboard\Companies\Albums\DestroyAlbumController;
 use App\Http\Controllers\Api\v1\Dashboard\Companies\Albums\ShowAlbumController;
+use App\Http\Controllers\Api\v1\Dashboard\Companies\Artists\DestroyArtistController;
+use App\Http\Controllers\Api\v1\Dashboard\Companies\Artists\IndexArtistController;
+use App\Http\Controllers\Api\v1\Dashboard\Companies\Artists\ShowArtistController;
+use App\Http\Controllers\Api\v1\Dashboard\Companies\Artists\StoreArtistController;
+use App\Http\Controllers\Api\v1\Dashboard\Companies\Artists\UpdateArtistController;
 use Illuminate\Support\Facades\Route;
 
 
@@ -40,8 +45,9 @@ Route::name('dashboard.')->prefix('dashboard')->whereUuid(['id'])->group(functio
                     '/',
                     IndexNotificationController::class
                 )->name('index');
-                Route::get('/{id}',
-                ShowNotificationController::class
+                Route::get(
+                    '/{id}',
+                    ShowNotificationController::class
                 )->name('show');
             });
             Route::name('company.')->prefix('company')->group(function () {
@@ -112,6 +118,34 @@ Route::name('dashboard.')->prefix('dashboard')->whereUuid(['id'])->group(functio
                     '/{id}',
                     DestroyAlbumController::class
                 )->name('destroy');
+            });
+
+            Route::name('artists.')->prefix('artists')->group(function () {
+
+                Route::get(
+                    '/',
+                    IndexArtistController::class
+                )->name('index');
+
+                Route::post(
+                    '/',
+                    StoreArtistController::class
+                )->name('store');
+
+                Route::get(
+                    '/{id}',
+                    ShowArtistController::class
+                )->name('show');
+
+                Route::delete(
+                    '/{id}',
+                    DestroyArtistController::class
+                )->name('destroy');
+
+                Route::patch(
+                    '/{id}',
+                    UpdateArtistController::class
+                )->name('update');
             });
         });
     });
