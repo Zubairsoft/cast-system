@@ -161,6 +161,22 @@ return [
         'category_name_en' => [
             'min' => 'the length of string should be :attribute at less 3 characters',
             'max' => 'the length of string should not be :attribute more than 255 characters',
+        ],
+        'album_name_en' => [
+            'min' => 'the length of string should be :attribute at less 3 characters',
+            'max' => 'the length of string should not be :attribute more than 255 characters',
+        ],
+        'album_name_en' => [
+            'min' => 'the length of string should be :attribute at less 3 characters',
+            'max' => 'the length of string should not be :attribute more than 255 characters',
+        ],
+        'artist_name_en' => [
+            'min' => 'the length of string should be :attribute at less 3 characters',
+            'max' => 'the length of string should not be :attribute more than 255 characters',
+        ],
+        'artist_name_en' => [
+            'min' => 'the length of string should be :attribute at less 3 characters',
+            'max' => 'the length of string should not be :attribute more than 255 characters',
         ]
     ],
 
@@ -186,6 +202,15 @@ return [
         'address' => 'Address',
         'license_document' => 'License Document',
         'account_type' => 'Account Type',
+        ' category' => 'Category',
+        'album_name_en' => 'Album Name En',
+        'album_name_ar' => 'Album Name Ar',
+        'album' => 'Album',
+        'artist' => 'Artist',
+        'artist_name_ar' => 'Artist Name Ar',
+        'artist_name_en' => '  Artist Name En',
+        'date_of_birth' => 'Date Of Birthday',
+        'country' => 'Country',
     ],
 
 ];
