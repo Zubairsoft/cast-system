@@ -12,4 +12,11 @@ trait NameAttributePresenter
             return app()->getLocale() === "ar" ? $this->name_ar : $this->name_en;
         });
     }
+
+    protected function status():Attribute
+    {
+        return new Attribute(get: function(){
+            return $this->is_active ? __('keywords.active'):__('keywords.dis_active');
+        });
+    }
 }

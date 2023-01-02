@@ -20,7 +20,8 @@ class DatabaseSeeder extends Seeder
             UserSeeder::class,
             CompanySeeder::class,
             CategorySeeder::class,
-            AlbumSeeder::class
+            AlbumSeeder::class,
+            ArtistSeeder::class,
         ]);
     }
 }

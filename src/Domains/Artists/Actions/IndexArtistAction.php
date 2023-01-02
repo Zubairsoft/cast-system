@@ -2,6 +2,7 @@
 
 namespace Domains\Artists\Actions;
 
+use App\Http\Resources\Dashboard\Companies\Artists\ArtistResource;
 use App\Models\Artist;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Http\Request;
@@ -10,7 +11,7 @@ use Illuminate\Support\Facades\Auth;
 class IndexArtistAction
 {
 
-    public function __invoke(Request $request)
+    public function __invoke(Request $request): array
     {
         $perPage = $request->perPage ?? 15;
         $sort = $request->sort ?? 'desc';
@@ -24,6 +25,6 @@ class IndexArtistAction
                     ->orWhere('name_en', 'like', "{$request->input('search_text')}")
             );
 
-        return $artists->orderBy($sortBy, $sort)->paginate($perPage);
+        return ArtistResource::collection($artists->orderBy($sortBy, $sort)->paginate($perPage))->appends($request->query())->toArray();
     }
 }

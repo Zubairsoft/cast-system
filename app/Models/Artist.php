@@ -2,6 +2,8 @@
 
 namespace App\Models;
 
+use Domains\Artists\Presenter\ArtistPresenter;
+use Domains\Support\Traits\ToggleIsActiveTrait;
 use Illuminate\Database\Eloquent\Concerns\HasUuids;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
@@ -10,7 +12,7 @@ use Illuminate\Database\Eloquent\Relations\MorphOne;
 
 class Artist extends Model
 {
-    use HasFactory, HasUuids;
+    use HasFactory, HasUuids,ToggleIsActiveTrait,ArtistPresenter;
 
     protected $fillable = [
         'name_ar',
