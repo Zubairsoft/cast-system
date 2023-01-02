@@ -2,24 +2,21 @@
 
 namespace Domains\Albums\Presenter;
 
+use Domains\Support\Presenter\NameAttributePresenter;
 use Illuminate\Database\Eloquent\Casts\Attribute;
 
 trait AlbumPresenter
 {
+    use NameAttributePresenter;
 
-    protected function name_en(): Attribute
-    {
-        return new Attribute(get: function () {
-            return strtoupper($this->name_en) ;
-        });
-    }
+    // protected function nameEn(): Attribute
+    // {
+    //     return new Attribute(get: function () {
+    //         return strtoupper($this->name_en) ;
+    //     });
+    // }
 
-    protected function name(): Attribute
-    {
-        return new Attribute(get: function () {
-            return app()->getLocale() === 'ar' ? $this->name_ar : strtoupper($this->name_en);
-        });
-    }
+
 
     protected function status():Attribute
     {

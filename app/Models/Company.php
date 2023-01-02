@@ -7,10 +7,11 @@ use Illuminate\Database\Eloquent\Concerns\HasUuids;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 
 class Company extends Model
 {
-    use HasFactory, HasUuids,CompanyPresenter;
+    use HasFactory, HasUuids, CompanyPresenter;
 
     protected $fillable = [
         'name',
@@ -26,5 +27,10 @@ class Company extends Model
     public function representative(): BelongsTo
     {
         return $this->belongsTo(User::class);
+    }
+
+    public function artists(): HasMany
+    {
+        return $this->hasMany(Artist::class);
     }
 }

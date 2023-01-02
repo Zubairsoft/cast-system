@@ -137,7 +137,15 @@ return [
         'address' => 'العنوان',
         'license_document' => 'الترخيص',
         'account_type' => 'نوع الحساب',
-
+        ' category' => 'الفئة',
+        'album_name_en' => 'اسم الالبوم بلانجليزي',
+        'album_name_ar' => 'اسم الالبوم بالعربي',
+        'album' => 'الالبوم',
+        'artist' => 'الفنان',
+        'artist_name_ar' => 'اسم الفنان بالعربي',
+        'artist_name_en' => 'اسم الفنان بالانجليزي',
+        'date_of_birth'=>'تاريخ الميلاد',
+        'country'=>'البلد',
     ],
 
 
@@ -170,13 +178,28 @@ return [
         'category_name_en' => [
             'min' => 'يجب أن يكون طول :attribute على الأقل 3 أحرف.',
             'max' => 'يجب الا يكون طول :attribute على اكتر من 255 أحرف.'
-
         ],
         'category_name_ar' => [
             'min' => 'يجب أن يكون طول :attribute على الأقل 3 أحرف.',
             'max' => 'يجب الا يكون طول :attribute على اكتر من 255 أحرف.'
+        ],
+        'album_name_en' => [
+            'min' => 'يجب أن يكون طول :attribute على الأقل 3 أحرف.',
+            'max' => 'يجب الا يكون طول :attribute على اكتر من 255 أحرف.'
+        ],
+        'album_name_ar' => [
+            'min' => 'يجب أن يكون طول :attribute على الأقل 3 أحرف.',
+            'max' => 'يجب الا يكون طول :attribute على اكتر من 255 أحرف.'
+        ],
+        'artist_name_en' => [
+            'min' => 'يجب أن يكون طول :attribute على الأقل 3 أحرف.',
+            'max' => 'يجب الا يكون طول :attribute على اكتر من 255 أحرف.'
+        ],
+        'artist_name_ar' => [
+            'min' => 'يجب أن يكون طول :attribute على الأقل 3 أحرف.',
+            'max' => 'يجب الا يكون طول :attribute على اكتر من 255 أحرف.'
+        ],
 
-        ]
     ]
 
 

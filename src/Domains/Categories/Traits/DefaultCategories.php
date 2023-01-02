@@ -34,6 +34,13 @@ trait DefaultCategories
                 'name_en' => 'golf Songs',
                 'is_active' => Arr::random([true, false]),
             ],
+            [
+                'id'=>fake()->uuid(),
+                'name_ar' => 'اناشيد اسلامية',
+                'name_en' => 'Islam Songs',
+                'is_active' => Arr::random([true, false]),
+            ],
+
         ];
     }
 }

@@ -2,12 +2,13 @@
 
 namespace Domains\Categories\Presenter;
 
+use Domains\Support\Presenter\NameAttributePresenter;
 use Illuminate\Contracts\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Casts\Attribute;
 
 trait CategoryPresenter
 {
-
+  use NameAttributePresenter;
     // old way 
 
     // public function getNameAttribute()
@@ -37,10 +38,7 @@ trait CategoryPresenter
         });
     }
 
-    protected function name(): Attribute
-    {
-        return new Attribute(get: fn ($value, $attr) => app()->getLocale() === 'en' ? strtoupper($attr['name_en']) : $attr['name_ar']);
-    }
+
 
     protected function status(): Attribute
     {
