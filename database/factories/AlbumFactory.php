@@ -2,7 +2,6 @@
 
 namespace Database\Factories;
 
-use App\Models\Album;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
@@ -19,8 +18,8 @@ class AlbumFactory extends Factory
     public function definition()
     {
         return [
-            'name_en' => fake()->firstName(),
-            'name_ar' => fake()->country(),
+            'name_en' => fake()->company(),
+            'name_ar' => fake('ar_SA')->company(),
         ];
     }
 }
