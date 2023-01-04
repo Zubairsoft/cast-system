@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Api\v1\Dashboard\Admin\Artists\ToggleArtistActivationController as AdminToggleArtistActivationController;
 use App\Http\Controllers\Api\v1\Dashboard\Admin\Auth\LoginController;
 use App\Http\Controllers\Api\v1\Dashboard\Admin\Auth\LogoutController;
 use App\Http\Controllers\Api\v1\Dashboard\Companies\Albums\IndexAlbumsController;
@@ -9,6 +10,7 @@ use App\Http\Controllers\Api\v1\Dashboard\Admin\Categories\DestroyCategoryContro
 use App\Http\Controllers\Api\v1\Dashboard\Admin\Categories\IndexCategoryController;
 use App\Http\Controllers\Api\v1\Dashboard\Admin\Categories\ShowCategoryController;
 use App\Http\Controllers\Api\v1\Dashboard\Admin\Categories\StoreCategoryController;
+use App\Http\Controllers\Api\v1\Dashboard\Admin\Categories\ToggleCategoryActivationController;
 use App\Http\Controllers\Api\v1\Dashboard\Admin\Categories\UpdateCategoryController;
 use App\Http\Controllers\Api\v1\Dashboard\Admin\Companies\IndexCompanyController;
 use App\Http\Controllers\Api\v1\Dashboard\Admin\Companies\ShowCompanyController;
@@ -16,10 +18,12 @@ use App\Http\Controllers\Api\v1\Dashboard\Admin\Notification\IndexNotificationCo
 use App\Http\Controllers\Api\v1\Dashboard\Admin\Notification\ShowNotificationController;
 use App\Http\Controllers\Api\v1\Dashboard\Companies\Albums\DestroyAlbumController;
 use App\Http\Controllers\Api\v1\Dashboard\Companies\Albums\ShowAlbumController;
+use App\Http\Controllers\Api\v1\Dashboard\Companies\Albums\ToggleAlbumActivationController;
 use App\Http\Controllers\Api\v1\Dashboard\Companies\Artists\DestroyArtistController;
 use App\Http\Controllers\Api\v1\Dashboard\Companies\Artists\IndexArtistController;
 use App\Http\Controllers\Api\v1\Dashboard\Companies\Artists\ShowArtistController;
 use App\Http\Controllers\Api\v1\Dashboard\Companies\Artists\StoreArtistController;
+use App\Http\Controllers\Api\v1\Dashboard\Companies\Artists\ToggleArtistActivationController;
 use App\Http\Controllers\Api\v1\Dashboard\Companies\Artists\UpdateArtistController;
 use Illuminate\Support\Facades\Route;
 
@@ -87,6 +91,18 @@ Route::name('dashboard.')->prefix('dashboard')->whereUuid(['id'])->group(functio
                     '/{id}',
                     DestroyCategoryController::class
                 )->name('destroy');
+
+                Route::patch(
+                    '/{id}/activate-toggle',
+                    ToggleCategoryActivationController::class
+                )->name('activate-toggle');
+            });
+
+            Route::name('artists.')->prefix('artists')->group(static function () {
+                Route::patch(
+                    '{id}/activate-toggle',
+                    AdminToggleArtistActivationController::class
+                )->name('activate-toggle');
             });
         });
     });
@@ -118,6 +134,11 @@ Route::name('dashboard.')->prefix('dashboard')->whereUuid(['id'])->group(functio
                     '/{id}',
                     DestroyAlbumController::class
                 )->name('destroy');
+
+                Route::patch(
+                    '/{id}/activate-toggle',
+                    ToggleAlbumActivationController::class
+                )->name('activate-toggle');
             });
 
             Route::name('artists.')->prefix('artists')->group(function () {
@@ -146,6 +167,11 @@ Route::name('dashboard.')->prefix('dashboard')->whereUuid(['id'])->group(functio
                     '/{id}',
                     UpdateArtistController::class
                 )->name('update');
+
+                Route::patch(
+                    '/{id}/activate-toggle',
+                    ToggleArtistActivationController::class
+                )->name('activate-toggle');
             });
         });
     });
