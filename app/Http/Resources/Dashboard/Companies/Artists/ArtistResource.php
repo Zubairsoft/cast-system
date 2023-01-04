@@ -17,10 +17,11 @@ class ArtistResource extends JsonResource
     public function toArray($request): array|Arrayable|JsonSerializable
     {
         return [
+            'id' => $this->id,
             'name' => $this->name,
             'date_of_birthday' => $this->date_of_birth,
             'country' => $this->country,
-            'status'=>$this->status,
+            'status' => $this->status,
         ];
     }
 }
