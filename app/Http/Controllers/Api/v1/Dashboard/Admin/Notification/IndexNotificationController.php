@@ -3,17 +3,17 @@
 namespace App\Http\Controllers\Api\v1\Dashboard\Admin\Notification;
 
 use App\Http\Controllers\Controller;
-use Auth;
+use App\Http\Resources\Dashboard\Admin\Notifications\NotificationResource;
+
 use Illuminate\Http\JsonResponse;
-use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class IndexNotificationController extends Controller
 {
     public function __invoke(): JsonResponse
     {
-        //TODO make resource for notification
         $admin = Auth::user();
-        $notifications = $admin->notifications ;
-        return sendSuccessResponse($notifications, __('messages.data-getting'));
+        $notifications = $admin->notifications;
+        return sendSuccessResponse(NotificationResource::collection($notifications), __('messages.data-getting'));
     }
 }
