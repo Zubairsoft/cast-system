@@ -4,10 +4,9 @@ namespace App\Notifications\Dashboard\Admin\Artists;
 
 use Illuminate\Bus\Queueable;
 use Illuminate\Contracts\Queue\ShouldQueue;
-use Illuminate\Notifications\Messages\MailMessage;
 use Illuminate\Notifications\Notification;
 
-class DestroyArtistNotification extends Notification
+class DestroyArtistNotification extends Notification implements ShouldQueue
 {
     use Queueable;
 
