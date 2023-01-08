@@ -4,11 +4,10 @@ namespace App\Notifications\Dashboard\Admin\Albums;
 
 use Illuminate\Bus\Queueable;
 use Illuminate\Contracts\Queue\ShouldQueue;
-use Illuminate\Notifications\Messages\MailMessage;
 use Illuminate\Notifications\Notification;
 use Illuminate\Support\Facades\App;
 
-class StoreAlbumNotification extends Notification
+class StoreAlbumNotification extends Notification implements ShouldQueue
 {
     use Queueable;
 
