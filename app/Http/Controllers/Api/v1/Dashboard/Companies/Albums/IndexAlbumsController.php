@@ -22,7 +22,7 @@ class IndexAlbumsController extends Controller
     {
         $perPage = $request->input('perPage') ?? 15;
         $sort = $request->input('sort') ?? 'desc';
-        $sortBy = $request->input('sortBy') ?? 'id';
+        $sortBy = $request->input('sortBy') ?? 'created_at';
 
         $albums = Album::query()->belongToCompany();
 

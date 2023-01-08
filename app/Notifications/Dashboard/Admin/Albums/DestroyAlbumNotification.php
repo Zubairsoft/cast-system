@@ -4,10 +4,9 @@ namespace App\Notifications\Dashboard\Admin\Albums;
 
 use Illuminate\Bus\Queueable;
 use Illuminate\Contracts\Queue\ShouldQueue;
-use Illuminate\Notifications\Messages\MailMessage;
 use Illuminate\Notifications\Notification;
 
-class DestroyAlbumNotification extends Notification
+class DestroyAlbumNotification extends Notification implements ShouldQueue
 {
     use Queueable;
 

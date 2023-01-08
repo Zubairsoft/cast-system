@@ -18,7 +18,7 @@ class DataResource extends JsonResource
         return [
             'title' => $this['title_' . App::currentLocale()],
             'body' => $this['body_' . App::currentLocale()],
-       //     'album_id'=>$this['album_id'],
+            'link_id' => $this['link_id'] ?? ''
         ];;
     }
 }
