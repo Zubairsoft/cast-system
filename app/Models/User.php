@@ -4,12 +4,11 @@ namespace App\Models;
 
 // use Illuminate\Contracts\Auth\MustVerifyEmail;
 
-
+use Domains\User\Presenter\UserPresenter;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
-use Illuminate\Support\Facades\Hash;
 use Laravel\Sanctum\HasApiTokens;
 use Domains\User\Trait\Account\AccountVerification;
 use Domains\User\Trait\Account\HasRole;
@@ -18,7 +17,7 @@ use Illuminate\Database\Eloquent\Relations\HasOne;
 
 class User extends Authenticatable implements MustVerifyEmail
 {
-    use HasApiTokens, HasFactory, Notifiable, AccountVerification,HasRole;
+    use HasApiTokens, HasFactory, Notifiable, AccountVerification,HasRole,UserPresenter;
 
     /**
      * The attributes that are mass assignable.
@@ -65,8 +64,5 @@ class User extends Authenticatable implements MustVerifyEmail
         return $this->hasOne(Company::class,'representative_id');
     }
 
-    public function setPasswordAttribute($value)
-    {
-        $this->attributes['password'] = Hash::make($value);
-    }
+
 }

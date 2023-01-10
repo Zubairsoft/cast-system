@@ -11,9 +11,9 @@ use Illuminate\Http\Request;
 
 class ProfileController extends Controller
 {
-    public function __invoke(Request $request):JsonResponse
+    public function __invoke(Request $request): JsonResponse
     {
-        $user=(new ProfileAction)();
-        return sendSuccessResponse(ProfileResource::make($user),__('messages.data-getting'));
+        $user = (new ProfileAction)();
+        return sendSuccessResponse(ProfileResource::make($user), __('messages.data-getting'));
     }
 }

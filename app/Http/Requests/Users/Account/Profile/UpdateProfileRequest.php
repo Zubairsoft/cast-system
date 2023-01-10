@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Requests\Users\Account\Users\Auth;
+namespace App\Http\Requests\Users\Account\Profile;
 
 use Illuminate\Contracts\Validation\Validator;
 use Illuminate\Foundation\Http\FormRequest;
@@ -8,7 +8,7 @@ use Illuminate\Http\Exceptions\HttpResponseException;
 use Illuminate\Validation\Rule;
 use Illuminate\Validation\Rules\File;
 
-class RegisterRequest extends FormRequest
+class UpdateProfileRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -28,15 +28,17 @@ class RegisterRequest extends FormRequest
     public function rules()
     {
         return [
-            //
-            'name' => ['required', 'string', 'max:255', 'min:3'],
-            'username' => ['required', 'string', 'max:255', 'min:3', Rule::unique('users', 'username')],
-            'email' => ['required', 'email', 'unique:users,email'],
-            'avatar' => ['sometimes', File::image()->max(1024)],
-            'password' => ['min:4', 'confirmed']
+            'username' => [
+                'sometimes',
+                'string',
+                Rule::unique('users')->ignore($this->user()),
+            ],
+            'avatar' => [
+                'sometimes',
+                File::image()->max(1024),
+            ]
         ];
     }
-
 
     protected function failedValidation(Validator $validator)
     {

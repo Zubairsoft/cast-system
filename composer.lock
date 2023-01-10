@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "1619b916e0fb04c83517c9843f6b7c98",
+    "content-hash": "cb2c43f4da705ffb2aa284c8ec01d956",
     "packages": [
         {
             "name": "bensampo/laravel-enum",
@@ -3243,16 +3243,16 @@
         },
         {
             "name": "spatie/laravel-data",
-            "version": "2.0.16",
+            "version": "2.2.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spatie/laravel-data.git",
-                "reference": "9c58880dd22d342ee9e371c87df8a6d632bed6d5"
+                "reference": "c02b411daf696a87f72d1f376c8caed918943912"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spatie/laravel-data/zipball/9c58880dd22d342ee9e371c87df8a6d632bed6d5",
-                "reference": "9c58880dd22d342ee9e371c87df8a6d632bed6d5",
+                "url": "https://api.github.com/repos/spatie/laravel-data/zipball/c02b411daf696a87f72d1f376c8caed918943912",
+                "reference": "c02b411daf696a87f72d1f376c8caed918943912",
                 "shasum": ""
             },
             "require": {
@@ -3313,7 +3313,7 @@
             ],
             "support": {
                 "issues": "https://github.com/spatie/laravel-data/issues",
-                "source": "https://github.com/spatie/laravel-data/tree/2.0.16"
+                "source": "https://github.com/spatie/laravel-data/tree/2.2.1"
             },
             "funding": [
                 {
@@ -3321,7 +3321,7 @@
                     "type": "github"
                 }
             ],
-            "time": "2022-11-18T16:02:44+00:00"
+            "time": "2022-12-21T14:29:12+00:00"
         },
         {
             "name": "spatie/laravel-package-tools",
