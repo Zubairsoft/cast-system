@@ -16,7 +16,7 @@ class ProfileResource extends JsonResource
     {
         return [
             'id' => $this->id,
-            'username' => $this->name,
+            'username' => $this->username,
             'email' => $this->email,
             'avatar' => storage_path().'/app/public/'.$this->avatar,
         ];
