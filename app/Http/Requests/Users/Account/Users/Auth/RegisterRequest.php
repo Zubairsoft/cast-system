@@ -30,9 +30,9 @@ class RegisterRequest extends FormRequest
         return [
             //
             'name' => ['required', 'string', 'max:255', 'min:3'],
-            'username'=>['required', 'string', 'max:255', 'min:3',Rule::unique('users','username')],
+            'username' => ['required', 'string', 'max:255', 'min:3', Rule::unique('users', 'username')],
             'email' => ['required', 'email', 'unique:users,email'],
-            'avatar' => ['nullable', File::types(['png','jpeg','jpg'])->max(1024)],
+            'avatar' => ['sometimes', File::image()->max(1024)],
             'password' => ['min:4', 'confirmed']
         ];
     }
