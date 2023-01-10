@@ -10,6 +10,7 @@ use App\Http\Controllers\Api\v1\Users\Account\Users\Auth\LoginController;
 use App\Http\Controllers\Api\v1\Users\Account\Users\Auth\LogoutController;
 use App\Http\Controllers\Api\v1\Users\Account\Users\Auth\RegisterController;
 use App\Http\Controllers\Api\v1\Users\Account\Profile\ProfileController;
+use App\Http\Controllers\Api\v1\Users\Account\Profile\UpdateProfileController;
 use App\Http\Controllers\Api\v1\Users\Account\Verification\SendVerificationCodeController;
 use App\Http\Controllers\Api\v1\Users\Account\Verification\VerificationCodeController;
 
@@ -69,6 +70,11 @@ Route::name('account.')->prefix('/account')->group(function () {
         Route::get(
             'me',
             ProfileController::class
+        )->name('me');
+
+        Route::patch(
+            'me',
+         UpdateProfileController::class
         )->name('me');
     });
 });
