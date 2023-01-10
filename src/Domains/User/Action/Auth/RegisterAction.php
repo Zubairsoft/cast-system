@@ -20,7 +20,7 @@ class RegisterAction
     {
         $attributes = $request->validated();
 
-        $attributes['avatar'] = $this->uploadImage($request->avatar,'Users/avatar');
+       // $attributes['avatar'] = $this->uploadImage($request->avatar,'Users/avatar');
     
         $data = User::create($attributes);
 
