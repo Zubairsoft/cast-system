@@ -144,8 +144,14 @@ return [
         'artist' => 'الفنان',
         'artist_name_ar' => 'اسم الفنان بالعربي',
         'artist_name_en' => 'اسم الفنان بالانجليزي',
-        'date_of_birth'=>'تاريخ الميلاد',
-        'country'=>'البلد',
+        'date_of_birth' => 'تاريخ الميلاد',
+        'country' => 'البلد',
+        'music' => 'الصوت',
+        'title_ar' => 'العنوان بالعربي',
+        'title_en' => 'العنوان بالانجليزي',
+        'description_ar' => 'الوصف بالعربي ',
+        'description_en' => 'الوصف بالانجليزي',
+
     ],
 
 
