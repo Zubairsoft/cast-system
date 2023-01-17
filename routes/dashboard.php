@@ -25,6 +25,12 @@ use App\Http\Controllers\Api\v1\Dashboard\Companies\Artists\ShowArtistController
 use App\Http\Controllers\Api\v1\Dashboard\Companies\Artists\StoreArtistController;
 use App\Http\Controllers\Api\v1\Dashboard\Companies\Artists\ToggleArtistActivationController;
 use App\Http\Controllers\Api\v1\Dashboard\Companies\Artists\UpdateArtistController;
+use App\Http\Controllers\Api\v1\Dashboard\Companies\Music\DestroyMusicController;
+use App\Http\Controllers\Api\v1\Dashboard\Companies\Music\IndexAllMusicController;
+use App\Http\Controllers\Api\v1\Dashboard\Companies\Music\IndexMusicController;
+use App\Http\Controllers\Api\v1\Dashboard\Companies\Music\ShowMusicController;
+use App\Http\Controllers\Api\v1\Dashboard\Companies\Music\StoreMusicController;
+use App\Http\Controllers\Api\v1\Dashboard\Companies\Music\UpdateMusicController;
 use Illuminate\Support\Facades\Route;
 
 
@@ -139,6 +145,39 @@ Route::name('dashboard.')->prefix('dashboard')->whereUuid(['id'])->group(functio
                     '/{id}/activate-toggle',
                     ToggleAlbumActivationController::class
                 )->name('activate-toggle');
+
+                Route::get(
+                    '{id}/music',
+                    IndexMusicController::class
+                )->name('music');
+            });
+
+            Route::name('music.')->prefix('music')->group(static function () {
+                Route::post(
+                    '/',
+                    StoreMusicController::class
+                )->name('store');
+
+                Route::get(
+                    '/{id}',
+                    ShowMusicController::class
+                )->name('show');
+
+                Route::delete(
+                    '/{id}',
+                    DestroyMusicController::class
+                )->name('destroy');
+
+                Route::get(
+                    '/',
+                    IndexAllMusicController::class
+                )->name('index');
+
+                Route::patch(
+                    '/{id}',
+                    UpdateMusicController::class
+                )->name('update');
+                
             });
 
             Route::name('artists.')->prefix('artists')->group(function () {
