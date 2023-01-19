@@ -211,6 +211,11 @@ return [
         'artist_name_en' => '  Artist Name En',
         'date_of_birth' => 'Date Of Birthday',
         'country' => 'Country',
+        'music' => 'Music',
+        'title_ar' => ' Title Ar',
+        'title_en' => ' Title En',
+        'description_ar' => ' Description Ar ',
+        'description_en' => 'Description En',
     ],
 
 ];

@@ -9,6 +9,7 @@ use Illuminate\Database\Eloquent\Concerns\HasUuids;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\Relations\MorphOne;
 use Illuminate\Support\Facades\Auth;
 
@@ -26,8 +27,8 @@ class Album extends Model
 
     protected $cast = [
         'is_active' => 'boolean',
-        'creator_id'=>'integer',
-        'category_id'=>'string',
+        'creator_id' => 'integer',
+        'category_id' => 'string',
     ];
 
     public function category(): BelongsTo
@@ -43,6 +44,11 @@ class Album extends Model
     public function image(): MorphOne
     {
         return $this->morphOne(Image::class, 'imageable');
+    }
+
+    public function music(): HasMany
+    {
+        return $this->hasMany(Music::class);
     }
 
     ########################## scopes #############################################
