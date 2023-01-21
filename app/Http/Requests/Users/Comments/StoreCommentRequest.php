@@ -30,7 +30,7 @@ class StoreCommentRequest extends FormRequest
                 'required',
                 'min:2',
             ],
-            'post' => [
+            'music' => [
                 'required',
                 'string'
             ],
