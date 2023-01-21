@@ -22,6 +22,10 @@ class Music extends Model
         'is_active'
     ];
 
+    protected $cast = [
+        'album_id' => 'string',
+        'is_active' => 'boolean',
+    ];
 
     /**
      * @return BelongsTo
