@@ -17,10 +17,11 @@ return new class extends Migration
             $table->uuid('id')->primary();
             $table->unsignedBigInteger('user_id');
             $table->string('comment');
-            $table->morphs('commentable');
+            $table->uuid('commentable_id');
+            $table->string('commentable_type');
 
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
-            
+
             $table->timestamps();
         });
     }
