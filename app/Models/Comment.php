@@ -5,12 +5,23 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Concerns\HasUuids;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\MorphTo;
 
 class Comment extends Model
 {
-    use HasFactory,HasUuids;
+    use HasFactory, HasUuids;
 
-    protected $fillable=[];
+    protected $fillable = [
+        'comment',
+        'user_id',
+    ];
 
-    protected $cast=[];
+    protected $cast = [
+        'user_id' => 'integer',
+    ];
+
+    public function commentable(): MorphTo
+    {
+        return $this->morphTo();
+    }
 }
