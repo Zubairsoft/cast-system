@@ -25,7 +25,16 @@ class StoreCommentRequest extends FormRequest
      */
     public function rules()
     {
-        return [];
+        return [
+            'comment' => [
+                'required',
+                'min:2',
+            ],
+            'post' => [
+                'required',
+                'string'
+            ],
+        ];
     }
 
     protected function failedValidation(Validator $validator)
