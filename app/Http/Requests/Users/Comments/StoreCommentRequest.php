@@ -37,7 +37,10 @@ class StoreCommentRequest extends FormRequest
             ],
             'images' => [
                 'sometimes',
-                File::image()->max(1024)
+                'array',
+            ],
+            'images.*'=>[
+                File::image()->max(1024),
             ]
         ];
     }
