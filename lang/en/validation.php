@@ -216,6 +216,7 @@ return [
         'title_en' => ' Title En',
         'description_ar' => ' Description Ar ',
         'description_en' => 'Description En',
+        'comment' => 'Comment',
     ],
 
 ];
