@@ -17,7 +17,6 @@ class StoreCommentController extends Controller
     public function __invoke(StoreCommentRequest $request): JsonResponse
     {
         $attributes = unsetEmptyParam(CommentData::fromRequest($request)->toArray());
-
         $music = Music::query()->findOrFail($request->music);
 
         if (!$music->is_active) {
@@ -31,12 +30,11 @@ class StoreCommentController extends Controller
                 ]
         );
 
-        if ($request->images?->isFile()) {
-            $comment->images()->create(
-                [
-                    'path' => $this->uploadImage($request->images, 'Music/' . $music->id . '/Comments')
-                ]
-            );
+        if ($request->hasFile('images')) {
+
+            $images = CommentData::imageMap($request, 'Music/' . $music->id . '/Comments');
+
+            $comment->images()->createMany($images);
         }
 
         return sendSuccessResponse($comment, __('messages.data-storing'));
