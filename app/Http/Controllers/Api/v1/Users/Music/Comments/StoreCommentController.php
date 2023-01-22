@@ -10,6 +10,14 @@ use Illuminate\Http\JsonResponse;
 
 class StoreCommentController extends Controller
 {
+    /**
+     * Handle the incoming request for store comment
+     * 
+     * @param StoreCommentRequest $request
+     * @param string $id
+     * 
+     * @return JsonResponse
+     */
     public function __invoke(StoreCommentRequest $request, string $id): JsonResponse
     {
         $attributes = CommentData::fromRequest($request)->toArray();
