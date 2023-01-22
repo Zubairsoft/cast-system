@@ -5,6 +5,7 @@ namespace App\Http\Requests\Users\Music\Comments;
 use Illuminate\Contracts\Validation\Validator;
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Http\Exceptions\HttpResponseException;
+use Illuminate\Validation\Rules\File;
 
 class StoreCommentRequest extends FormRequest
 {
@@ -26,7 +27,17 @@ class StoreCommentRequest extends FormRequest
     public function rules()
     {
         return [
-            //
+            'comment' => [
+                'required',
+                'min:2',
+            ],
+            'images' => [
+                'sometimes',
+                'array',
+            ],
+            'images.*'=>[
+                File::image()->max(1024),
+            ]
         ];
     }
 
