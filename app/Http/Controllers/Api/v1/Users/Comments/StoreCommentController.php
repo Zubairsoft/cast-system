@@ -14,6 +14,13 @@ class StoreCommentController extends Controller
 {
     use UploadMedia;
 
+    /**
+     * Handle the incoming request for store comment
+     * 
+     * @param StoreCommentRequest $request
+     * 
+     * @return JsonResponse
+     */
     public function __invoke(StoreCommentRequest $request): JsonResponse
     {
         $attributes = unsetEmptyParam(CommentData::fromRequest($request)->toArray());
