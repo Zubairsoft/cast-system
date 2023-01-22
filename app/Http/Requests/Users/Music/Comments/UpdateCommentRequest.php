@@ -27,7 +27,17 @@ class UpdateCommentRequest extends FormRequest
     public function rules()
     {
         return [
-   
+            'comment' => [
+                'sometimes',
+                'min:2',
+            ],
+            'images' => [
+                'sometimes',
+                'array',
+            ],
+            'images.*' => [
+                File::image()->max(1024),
+            ]
         ];
     }
 
