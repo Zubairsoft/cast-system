@@ -11,6 +11,15 @@ use Illuminate\Http\JsonResponse;
 class UpdateCommentController extends Controller
 {
 
+    /**
+     * Handle the incoming request for Update comment 
+     * 
+     * @param UpdateMusicRequest $request
+     * @param string $id
+     * @param string $commentId
+     * 
+     * @return JsonResponse
+     */
     public function __invoke(UpdateMusicRequest $request, string $id, string $commentId): JsonResponse
     {
         $attributes = unsetEmptyParam(CommentData::fromRequest($request)->toArray());
