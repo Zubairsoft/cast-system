@@ -15,14 +15,14 @@ class CommentData extends Data
     ) {
     }
 
-    public static function fromRequest(StoreCommentRequest $request): self
+    public static function fromRequest( $request): self
     {
         return new self(
             $request->post('comment')
         );
     }
 
-    public static function imageMap(StoreCommentRequest $request, string $path): Collection
+    public static function imageMap( $request, string $path): Collection
     {
         return collect($request->images)
             ->map(function ($file) use ($path) {
