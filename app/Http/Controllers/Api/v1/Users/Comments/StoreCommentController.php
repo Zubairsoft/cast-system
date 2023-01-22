@@ -8,7 +8,6 @@ use App\Models\Music;
 use Domains\Helper\Trait\UploadMedia;
 use Domains\User\DTO\CommentData;
 use Illuminate\Http\JsonResponse;
-use Illuminate\Http\Request;
 
 class StoreCommentController extends Controller
 {
