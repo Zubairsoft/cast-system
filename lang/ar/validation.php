@@ -151,6 +151,7 @@ return [
         'title_en' => 'العنوان بالانجليزي',
         'description_ar' => 'الوصف بالعربي ',
         'description_en' => 'الوصف بالانجليزي',
+        'comment' => 'التعليق',
 
     ],
 

@@ -4,6 +4,7 @@ namespace Database\Factories;
 
 use App\Models\User;
 use Domains\User\Enums\Role;
+use Domains\User\Enums\Status;
 use Domains\User\Trait\Defaults\DefaultEmails;
 use Illuminate\Database\Eloquent\Factories\Factory;
 use Illuminate\Support\Arr;
@@ -24,12 +25,13 @@ class UserFactory extends Factory
     {
         return [
             'name' => fake()->name(),
-            'username'=>fake()->unique()->name(),
+            'username' => fake()->unique()->name(),
             'email' => fake()->unique()->email(),
             'email_verified_at' => now(),
-            'password' => defaultPassword(), 
+            'password' => defaultPassword(),
             'remember_token' => Str::random(10),
-            'role'=>Role::USER,
+            'role' => Role::USER,
+            'status' => Status::getRandomValue()
         ];
     }
 
@@ -44,5 +46,4 @@ class UserFactory extends Factory
             'email_verified_at' => null,
         ]);
     }
-
 }

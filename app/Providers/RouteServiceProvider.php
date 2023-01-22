@@ -31,6 +31,7 @@ class RouteServiceProvider extends ServiceProvider
         $this->apiRouteMap();
         $this->webRouteMap();
         $this->companyRouteMap();
+        $this->homeRouteMap();
     }
 
     protected function apiRouteMap()
@@ -69,5 +70,13 @@ class RouteServiceProvider extends ServiceProvider
         Route::prefix('api/' . 'v' . config('app.version'))
             ->middleware('api')
             ->group(base_path('routes/company.php'));
+    }
+
+    
+    private function homeRouteMap(): void
+    {
+        Route::name('home.')->middleware(['auth:sanctum', 'api'])
+            ->prefix('api/' . 'v' . config('app.version') . '/home')
+            ->group(base_path('routes/home.php'));
     }
 }

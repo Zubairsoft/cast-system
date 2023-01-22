@@ -62,7 +62,7 @@ class StoreMusicRequest extends FormRequest
                 Rule::exists('albums', 'id')->where('creator_id', $this->user()->id)
             ],
             'is_active' => [
-                'nullable',
+                'sometimes',
                 'boolean',
             ]
         ];
