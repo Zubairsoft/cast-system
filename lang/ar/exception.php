@@ -5,6 +5,4 @@ return [
     'not_found_model_exception' => ' السجل غير موجود',
     'not_authorize' => 'غير مصرح لك باتمام هدا الاجراء ',
     'bad_request'=>'طلب خاطئ',
-
-
 ];
