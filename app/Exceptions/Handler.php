@@ -2,11 +2,15 @@
 
 namespace App\Exceptions;
 
+use App\Exceptions\Traits\ConvertToJsonResponse;
 use Illuminate\Foundation\Exceptions\Handler as ExceptionHandler;
 use Throwable;
 
 class Handler extends ExceptionHandler
 {
+
+    use ConvertToJsonResponse;
+
     /**
      * A list of exception types with their corresponding custom log levels.
      *
@@ -46,5 +50,13 @@ class Handler extends ExceptionHandler
         $this->reportable(function (Throwable $e) {
             //
         });
+    }
+
+    public function render($request, Throwable $e)
+    {
+        return match(app()->environment()){
+            'local','testing','production'=> $this->convertToJsonResponse($e,$request),
+            default => parent::render($request,$e)
+        };
     }
 }
