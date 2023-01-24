@@ -15,6 +15,7 @@ class MusicData extends Data
         public ?string $description,
         public ?UploadedFile $music,
         public ?string $album_id,
+        public ?bool $is_active
     ) {
     }
 
@@ -25,7 +26,8 @@ class MusicData extends Data
             $request->post('title_en'),
             $request->post('description'),
             $request->file('music'),
-            $request->post('album')
+            $request->post('album'),
+            $request->post('is_active')
         );
     }
 }
