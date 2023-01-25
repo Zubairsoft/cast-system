@@ -17,7 +17,7 @@ trait ConvertToJsonResponse
             $e instanceof ModelNotFoundException => $this->modelNotFoundException(__('exception.not_found_model_exception', [], $this->handleLocalization($request))),
             $e instanceof AuthenticationException => $this->userNotAuthorizeException(__('exception.not_authorize', [], $this->handleLocalization($request))),
             $e instanceof BadMethodCallException => $this->badRequest(__('exception.bad_request', [], $this->handleLocalization($request))),
-            default => sendErrorResponse(null, 'is_working for : ' . get_class($e))
+            default => sendErrorResponse(null, 'is_working for : ' . get_class($e),500)
         };
     }
 
