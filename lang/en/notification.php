@@ -18,5 +18,11 @@ return [
             'title' => 'Delete new Artist by company :company',
             'body' => ' Artist was Deleted with name :artist by company :company',
         ],
+    ],
+    'music' => [
+        'store' => [
+            'title' => 'the company :company add media',
+            'body' => 'the company :company add media with name :music'
+        ]
     ]
 ];
