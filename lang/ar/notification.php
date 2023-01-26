@@ -23,6 +23,10 @@ return [
         'store' => [
             'title' => 'باضافة مسجل :company قامت الشركة ',
             'body' => ':music باضافة مسجل باسم :company قامت الشركة',
+        ],
+        'destroy' => [
+            'title' => 'باحذف مسجل :company قامت الشركة ',
+            'body' => ':music باحذف مسجل باسم :company قامت الشركة',
         ]
     ]
 ];
