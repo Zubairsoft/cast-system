@@ -23,6 +23,10 @@ return [
         'store' => [
             'title' => 'the company :company add media',
             'body' => 'the company :company add media with name :music'
+        ],
+        'store' => [
+            'title' => 'the company :company delete media',
+            'body' => 'the company :company delete media with name :music'
         ]
     ]
 ];
