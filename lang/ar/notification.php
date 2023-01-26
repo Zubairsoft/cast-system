@@ -18,5 +18,15 @@ return [
             'title' => 'تم حذف فنان بواسطة الشركة :company',
             'body' => ' تم حذف فنان باسم :artist  بواسطة الشركة :company'
         ],
+    ],
+    'music' => [
+        'store' => [
+            'title' => 'باضافة مسجل :company قامت الشركة ',
+            'body' => ':music باضافة مسجل باسم :company قامت الشركة',
+        ],
+        'destroy' => [
+            'title' => 'باحذف مسجل :company قامت الشركة ',
+            'body' => ':music باحذف مسجل باسم :company قامت الشركة',
+        ]
     ]
 ];
