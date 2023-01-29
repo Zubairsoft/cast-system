@@ -23,7 +23,7 @@ class IndexArtistAction
                 fn (Builder $query) =>
                 $query->where('name_en', 'like', "%{$request->input('search_text')}%")
                     ->orWhere('name_en', 'like', "{$request->input('search_text')}")
-            );
+            )->with('image');
 
         return ArtistResource::collection($artists->orderBy($sortBy, $sort)->paginate($perPage))->appends($request->query())->toArray();
     }
