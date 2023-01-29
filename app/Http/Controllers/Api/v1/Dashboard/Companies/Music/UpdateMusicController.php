@@ -4,9 +4,8 @@ namespace App\Http\Controllers\Api\v1\Dashboard\Companies\Music;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Dashboard\Companies\Music\UpdateMusicRequest;
-use App\Models\Music;
+use App\Http\Resources\Dashboard\Companies\Music\MusicResource;
 use Domains\Music\Action\UpdateMusicAction;
-use Domains\Music\DTO\MusicData;
 use Illuminate\Http\JsonResponse;
 
 class UpdateMusicController extends Controller
@@ -15,6 +14,6 @@ class UpdateMusicController extends Controller
     {
         $music=(new UpdateMusicAction)($request,$id);
 
-        return sendSuccessResponse($music, __('messages.data-updating'));
+        return sendSuccessResponse(MusicResource::make($music), __('messages.data-updating'));
     }
 }

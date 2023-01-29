@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Api\v1\Dashboard\Companies\Music;
 
 use App\Http\Controllers\Controller;
+use App\Http\Resources\Dashboard\Companies\Music\MusicResource;
 use App\Models\Music;
 use Domains\Music\Action\IndexAllMusicAction;
 use Illuminate\Database\Eloquent\Builder;
@@ -17,6 +18,6 @@ class IndexAllMusicController extends Controller
 
         $query=(new IndexAllMusicAction)($request);
 
-        return sendSuccessResponse($query, __('messages.data-getting'));
+        return sendSuccessResponse(MusicResource::collection($query)->appends($request->query())->toArray(), __('messages.data-getting'));
     }
 }
