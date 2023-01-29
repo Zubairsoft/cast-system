@@ -2,6 +2,7 @@
 
 namespace App\Http\Resources\Dashboard\Companies\Artists;
 
+use App\Http\Resources\Support\Images\ImageResource;
 use Illuminate\Contracts\Support\Arrayable;
 use Illuminate\Http\Resources\Json\JsonResource;
 use JsonSerializable;
@@ -22,6 +23,7 @@ class ArtistResource extends JsonResource
             'date_of_birthday' => $this->date_of_birth,
             'country' => $this->country,
             'status' => $this->status,
+            'image' => ImageResource::make($this->whenLoaded('image')),
         ];
     }
 }
