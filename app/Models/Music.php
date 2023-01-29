@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use Domains\Music\Presenter\MusicPresenter;
 use Domains\Support\Traits\ToggleIsActiveTrait;
 use Illuminate\Database\Eloquent\Concerns\HasUuids;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
@@ -18,7 +19,8 @@ class Music extends Model
         'title_en',
         'music',
         'album_id',
-        'description',
+        'description_ar',
+        'description_en',
         'is_active'
     ];
 
