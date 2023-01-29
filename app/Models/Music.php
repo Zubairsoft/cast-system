@@ -12,7 +12,7 @@ use Illuminate\Database\Eloquent\Relations\MorphMany;
 
 class Music extends Model
 {
-    use HasFactory, HasUuids, ToggleIsActiveTrait;
+    use HasFactory, HasUuids, MusicPresenter, ToggleIsActiveTrait;
 
     protected $fillable = [
         'title_ar',
