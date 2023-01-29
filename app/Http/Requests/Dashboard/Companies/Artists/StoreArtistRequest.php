@@ -52,7 +52,7 @@ class StoreArtistRequest extends FormRequest
                 'max:255',
             ],
             'image' => [
-                'nullable',
+                'sometimes',
                 File::types(['jpg', 'png', 'jpeg'])->max(1024),
             ]
             //
