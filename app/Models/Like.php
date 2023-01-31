@@ -11,5 +11,16 @@ class Like extends Model
 {
     use HasFactory, HasUuids;
 
+    protected $fillable = [
+        'user_id',
+    ];
 
+    protected $cast = [
+        'user_id' => 'integer',
+    ];
+
+    public function likable(): MorphTo
+    {
+        return $this->morphTo();
+    }
 }
