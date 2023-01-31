@@ -19,6 +19,9 @@ class Like extends Model
         'user_id' => 'integer',
     ];
 
+    /**
+     * @return MorphTo
+     */
     public function likable(): MorphTo
     {
         return $this->morphTo();
