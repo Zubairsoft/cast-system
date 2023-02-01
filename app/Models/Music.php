@@ -48,7 +48,7 @@ class Music extends Model
     /**
      * @return MorphMany
      */
-    public function like(): MorphMany
+    public function likes(): MorphMany
     {
         return $this->morphMany(Like::class, 'likable');
     }
