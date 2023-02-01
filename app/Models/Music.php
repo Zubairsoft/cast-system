@@ -44,4 +44,12 @@ class Music extends Model
     {
         return $this->morphMany(Comment::class, 'commentable');
     }
+
+    /**
+     * @return MorphMany
+     */
+    public function likes(): MorphMany
+    {
+        return $this->morphMany(Like::class, 'likable');
+    }
 }
