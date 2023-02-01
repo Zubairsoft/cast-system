@@ -11,6 +11,14 @@ class StoreLikeController extends Controller
 {
     public function __invoke(string $id): JsonResponse
     {
+        $userId = Auth::user()->id;
 
+        $music = Music::query()->findOrFail(id: $id);
+
+        $likeData = ['user_id' => $userId];
+
+        $music->likes()->firstOrCreate($likeData);
+
+        return sendSuccessResponse(null, __('messages.data-storing'));
     }
 }
