@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Api\v1\Users\Likes\DestroyLikeController;
 use App\Http\Controllers\Api\v1\Users\Likes\StoreLikeController;
 use App\Http\Controllers\Api\v1\Users\Music\Comments\DestroyCommentController;
 use App\Http\Controllers\Api\v1\Users\Music\Comments\StoreCommentController;
@@ -19,6 +20,11 @@ Route::name('music.')->prefix('music/{id}')->group(static function () {
             '/',
             StoreLikeController::class
         )->name('store');
+
+        Route::delete(
+            '/',
+            DestroyLikeController::class
+        )->name('destroy');
     });
 
     Route::name('comments.')->prefix('comments')->group(static function () {
