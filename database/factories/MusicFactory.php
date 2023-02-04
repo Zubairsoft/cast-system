@@ -18,7 +18,12 @@ class MusicFactory extends Factory
     public function definition()
     {
         return [
-
+            'id' => fake()->uuid(),
+            'title_ar' => fake('ar_SA')->title('male'),
+            'title_en' => fake()->name('male'),
+            'description_ar' => fake('ar_SA')->paragraph(1),
+            'description_en' => fake()->paragraph(1),
+            'is_active' => Arr::random([true, false]),
         ];
     }
 }
