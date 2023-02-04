@@ -17,6 +17,18 @@ class MusicSeeder extends Seeder
      */
     public function run()
     {
+        $albums = Album::query()->get();
 
+        $albums->each(function ($album) {
+            for ($i = 0; $i < 10; $i++) {
+                $music = Music::factory()->make([
+                    'album_id' => $album->id,
+                ])->toArray();
+
+                $this->music[] = $music;
+            }
+        });
+
+        Music::query()->insert($this->music);
     }
 }
