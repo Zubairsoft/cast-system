@@ -17,8 +17,8 @@ class MusicCollectionResource extends JsonResource
     {
         return [
             'title' => $this->title,
-            'description' => $this->description,
             'music' => $this->music,
+            'description' => $this->description,
             'status' => $this->status,
             'created_at' => $this->created_at,
             'comments_count' => $this->comments_count,
