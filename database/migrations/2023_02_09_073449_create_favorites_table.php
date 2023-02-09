@@ -16,6 +16,12 @@ return new class extends Migration
         Schema::create('favorites', function (Blueprint $table) {
             $table->uuid('id')->primary();
 
+            $table->unsignedBigInteger('user_id');
+
+            $table->uuid('favoriteable_id');
+            $table->string('favoriteable_type');
+
+            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
 
             $table->timestamps();
         });
