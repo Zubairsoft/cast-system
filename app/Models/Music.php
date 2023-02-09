@@ -59,5 +59,11 @@ class Music extends Model
         return  $query->where('is_active', true);
     }
 
-
+    /**
+     * @return MorphMany
+     */
+    public function favorites(): MorphMany
+    {
+        return $this->morphMany(favorite::class, 'favoriteable');
+    }
 }
