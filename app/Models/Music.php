@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Domains\Music\Presenter\MusicPresenter;
 use Domains\Support\Traits\ToggleIsActiveTrait;
+use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Concerns\HasUuids;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
@@ -52,4 +53,11 @@ class Music extends Model
     {
         return $this->morphMany(Like::class, 'likable');
     }
+
+    public function scopeActive(Builder $query): Builder
+    {
+        return  $query->where('is_active', true);
+    }
+
+
 }
