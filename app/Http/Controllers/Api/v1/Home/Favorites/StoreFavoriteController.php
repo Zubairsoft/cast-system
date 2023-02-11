@@ -1,17 +1,15 @@
 <?php
 
-namespace App\Http\Controllers\Api\v1\Users\Favorites;
+namespace App\Http\Controllers\Api\v1\Home\Favorites;
 
 use App\Http\Controllers\Controller;
-use App\Http\Requests\Users\Favorites\StoreFavoriteRequest;
 use App\Models\Music;
 use Illuminate\Http\JsonResponse;
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
 class StoreFavoriteController extends Controller
 {
-    public function __invoke(int $id): JsonResponse
+    public function __invoke(string $id): JsonResponse
     {
         $userID = Auth::user()->id;
 
