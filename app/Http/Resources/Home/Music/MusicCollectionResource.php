@@ -1,12 +1,11 @@
 <?php
 
-namespace App\Http\Resources\Dashboard\Companies\Music;
+namespace App\Http\Resources\Home\Music;
 
 use App\Http\Resources\Dashboard\Companies\Albums\AlbumResource;
 use Illuminate\Http\Resources\Json\JsonResource;
-use Illuminate\Support\Facades\Storage;
 
-class MusicResource extends JsonResource
+class MusicCollectionResource extends JsonResource
 {
     /**
      * Transform the resource into an array.
@@ -19,10 +18,16 @@ class MusicResource extends JsonResource
         return [
             'id' => $this->id,
             'title' => $this->title,
-            'music' => Storage::url($this->music),
+            'music' => $this->music,
             'description' => $this->description,
             'status' => $this->status,
+            'created_at' => $this->created_at,
+            'comments_count' => $this->comments_count,
+            'likes_count' => $this->likes_count,
+            'is_liked' => $this->is_liked,
+            'is_favorite' => $this->is_favorite,
             'album' => AlbumResource::make($this->whenLoaded('album')),
+            'comments' => $this->whenLoaded('comments')
         ];
     }
 }

@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\Api\v1\Users\Likes;
+namespace App\Http\Controllers\Api\v1\Home\Likes;
 
 use App\Http\Controllers\Controller;
 use Domains\Music\Action\Likes\DestroyLikeAction;

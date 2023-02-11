@@ -15,6 +15,7 @@ use Domains\User\Trait\Account\AccountVerification;
 use Domains\User\Trait\Account\HasRole;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Relations\HasMany;
+use Illuminate\Database\Eloquent\Relations\HasManyThrough;
 use Illuminate\Database\Eloquent\Relations\HasOne;
 
 class User extends Authenticatable implements MustVerifyEmail
@@ -69,6 +70,18 @@ class User extends Authenticatable implements MustVerifyEmail
     public function likeCreator():HasMany
     {
         return $this->hasMany(Like::class);
+    }
+
+    public function favoritesMusic():HasManyThrough
+    {
+        return $this->hasManyThrough(
+            Music::class,
+        favorite::class,
+        'user_id',
+        'id',
+        'id',
+        'favoriteable_id'
+        )->where('favoriteable_type',Music::class);
     }
 
     ################# scope #########################

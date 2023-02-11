@@ -13,13 +13,13 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('likes', function (Blueprint $table) {
+        Schema::create('favorites', function (Blueprint $table) {
             $table->uuid('id')->primary();
 
             $table->unsignedBigInteger('user_id');
 
-            $table->uuid('likable_id');
-            $table->string('likable_type');
+            $table->uuid('favoriteable_id');
+            $table->string('favoriteable_type');
 
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
 
@@ -34,6 +34,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('likes');
+        Schema::dropIfExists('favorites');
     }
 };

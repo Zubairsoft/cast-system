@@ -5,7 +5,7 @@ use App\Http\Controllers\Api\v1\Users\Account\Companies\Auth\LogoutController as
 use App\Http\Controllers\Api\v1\Users\Account\Companies\Auth\RegisterController as AuthRegisterController;
 use App\Http\Controllers\Api\v1\Users\Account\Password\ForgetPasswordController;
 use App\Http\Controllers\Api\v1\Users\Account\Password\ResetPasswordController;
-
+use App\Http\Controllers\Api\v1\Users\Account\Profile\Favorites\IndexFavoriteController;
 use App\Http\Controllers\Api\v1\Users\Account\Users\Auth\LoginController;
 use App\Http\Controllers\Api\v1\Users\Account\Users\Auth\LogoutController;
 use App\Http\Controllers\Api\v1\Users\Account\Users\Auth\RegisterController;
@@ -67,14 +67,23 @@ Route::name('account.')->prefix('/account')->group(function () {
             LogoutController::class
         )->name('logout');
 
-        Route::get(
-            'me',
-            ProfileController::class
-        )->name('me');
+
+
+        Route::name('profile.')->prefix('me')->group(static function () {
+            Route::get(
+                '/',
+                ProfileController::class
+            )->name('me');
+
+            Route::get(
+                '/favorites',
+                IndexFavoriteController::class
+            )->name('favorites');
+        });
 
         Route::patch(
             'me',
-         UpdateProfileController::class
+            UpdateProfileController::class
         )->name('me');
     });
 });

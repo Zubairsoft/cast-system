@@ -19,6 +19,7 @@ class ProfileResource extends JsonResource
             'username' => $this->username,
             'email' => $this->email,
             'avatar' => storage_path().'/app/public/'.$this->avatar,
+            'favorite_count'=>$this->favorite_counts,
         ];
     }
 }
