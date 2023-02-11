@@ -1,9 +1,10 @@
 <?php
 
+use App\Http\Controllers\Api\v1\Home\Favorites\DestroyFavoriteController;
 use App\Http\Controllers\Api\v1\Home\Music\IndexMusicController;
-use App\Http\Controllers\Api\v1\Users\Favorites\StoreFavoriteController;
-use App\Http\Controllers\Api\v1\Users\Likes\DestroyLikeController;
-use App\Http\Controllers\Api\v1\Users\Likes\StoreLikeController;
+use App\Http\Controllers\Api\v1\Home\Favorites\StoreFavoriteController;
+use App\Http\Controllers\Api\v1\Home\Likes\DestroyLikeController;
+use App\Http\Controllers\Api\v1\Home\Likes\StoreLikeController;
 use App\Http\Controllers\Api\v1\Users\Music\Comments\DestroyCommentController;
 use App\Http\Controllers\Api\v1\Users\Music\Comments\StoreCommentController;
 use App\Http\Controllers\Api\v1\Users\Music\Comments\UpdateCommentController;
@@ -41,6 +42,11 @@ Route::name('music.')->prefix('music')->group(static function () {
                 '/',
                 StoreFavoriteController::class
             )->name('store');
+
+            Route::delete(
+                '/{favoriteId}',
+                DestroyFavoriteController::class
+            )->name('destroy');
         });
 
         Route::name('comments.')->prefix('comments')->group(static function () {
