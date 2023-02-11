@@ -14,6 +14,6 @@ class DestroyFavoriteController extends Controller
 
         $favorite->delete();
 
-        return sendErrorResponse(null,__('messages.data-storing'));
+        return sendErrorResponse(null,__('messages.data-deleting'),200);
     }
 }
