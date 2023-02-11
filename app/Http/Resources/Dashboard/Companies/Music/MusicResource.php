@@ -20,9 +20,9 @@ class MusicResource extends JsonResource
             'id' => $this->id,
             'title' => $this->title,
             'music' => Storage::url($this->music),
-            'album' => AlbumResource::make($this->whenLoaded('album')),
             'description' => $this->description,
-            'status' => $this->status
+            'status' => $this->status,
+            'album' => AlbumResource::make($this->whenLoaded('album')),
         ];
     }
 }
