@@ -71,6 +71,11 @@ class User extends Authenticatable implements MustVerifyEmail
         return $this->hasMany(Like::class);
     }
 
+    public function favorites():HasMany
+    {
+        return $this->hasMany(favorite::class,'user_id');
+    }
+
     ################# scope #########################
 
     public function scopeIsAdmin(Builder $query): Builder
