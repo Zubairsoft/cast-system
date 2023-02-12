@@ -7,5 +7,16 @@ use Illuminate\Support\Facades\Auth;
 
 class StoreFavoritesAction
 {
+    public function __invoke(string $id): void
+    {
+        $userID = Auth::user()->id;
 
+        $music = Music::query()->findOrFail($id);
+
+        $favoriteDate = [
+            'user_id' => $userID
+        ];
+
+        $music->favorites()->firstOrCreate($favoriteDate, $favoriteDate);
+    }
 }
