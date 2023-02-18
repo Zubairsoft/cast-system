@@ -3,7 +3,6 @@
 namespace App\Http\Controllers\Api\v1\Home\Favorites;
 
 use App\Http\Controllers\Controller;
-use App\Models\favorite;
 use Domains\Home\Actions\Favorites\DestroyFavoriteAction;
 use Illuminate\Http\JsonResponse;
 
