@@ -67,21 +67,26 @@ class User extends Authenticatable implements MustVerifyEmail
         return $this->hasOne(Company::class, 'representative_id');
     }
 
-    public function likeCreator():HasMany
+    public function likeCreator(): HasMany
     {
         return $this->hasMany(Like::class);
     }
 
-    public function favoritesMusic():HasManyThrough
+    public function favoritesMusic(): HasManyThrough
     {
         return $this->hasManyThrough(
             Music::class,
-        favorite::class,
-        'user_id',
-        'id',
-        'id',
-        'favoriteable_id'
-        )->where('favoriteable_type',Music::class);
+            favorite::class,
+            'user_id',
+            'id',
+            'id',
+            'favoriteable_id'
+        )->where('favoriteable_type', Music::class);
+    }
+
+    public function favorites(): HasMany
+    {
+        return $this->hasMany(favorite::class, 'user_id');
     }
 
     ################# scope #########################
