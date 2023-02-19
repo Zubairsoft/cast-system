@@ -9,13 +9,18 @@ use App\Models\User;
 use App\Notifications\Dashboard\Admin\Music\StoreMusicNotification;
 use Domains\Music\DTO\MusicData;
 use Domains\User\Enums\Role;
+use Illuminate\Http\JsonResponse;
 
 class StoreMusicAction
 {
-    public function __invoke(StoreMusicRequest $request): Music
+    public function __invoke(StoreMusicRequest $request): Music|JsonResponse
     {
         $album = Album::query()->findOrFail($request->album);
+
         $attributes = unsetEmptyParam(MusicData::fromRequest($request)->toArray());
+        if ($album->is_disabled()) {
+            return sendErrorResponse(null, __('exception.must_be_activated'), 422);
+        }
         $music = $album->music()->create($attributes);
 
         $admin = User::query()->where('role', Role::ADMIN)->firstOrFail();

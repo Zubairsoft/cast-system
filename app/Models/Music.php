@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use Domains\Global\Traits\Activation;
 use Domains\Music\Presenter\MusicPresenter;
 use Domains\Support\Traits\ToggleIsActiveTrait;
 use Illuminate\Database\Eloquent\Builder;
@@ -13,7 +14,7 @@ use Illuminate\Database\Eloquent\Relations\MorphMany;
 
 class Music extends Model
 {
-    use HasFactory, HasUuids, MusicPresenter, ToggleIsActiveTrait;
+    use HasFactory, HasUuids, MusicPresenter, ToggleIsActiveTrait, Activation;
 
     protected $fillable = [
         'title_ar',
