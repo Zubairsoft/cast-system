@@ -6,5 +6,5 @@ return [
     'not_authorize' => 'you are not authorize you need to login',
     'bad_request' => 'bad request',
     'type_error' => 'data type error',
-
+    'must_be_activated' => 'the element must be activated',
 ];

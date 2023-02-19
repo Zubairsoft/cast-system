@@ -5,5 +5,6 @@ return [
     'not_found_model_exception' => ' السجل غير موجود',
     'not_authorize' => 'غير مصرح لك باتمام هدا الاجراء ',
     'bad_request' => 'طلب خاطئ',
-    'type_error' => 'خطاء في  نوع البيانات'
+    'type_error' => 'خطاء في  نوع البيانات',
+    'must_be_activated' => 'يجب ان يكون العنصر مفعل',
 ];
