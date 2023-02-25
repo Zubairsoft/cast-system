@@ -18,6 +18,7 @@ return new class extends Migration
 
             $table->unsignedBigInteger('subscription_id');
             $table->string('type');
+            $table->date('started_at');
             $table->date('ended_at');
 
             $table->foreign('subscription_id')->references('id')->on('users')->onDelete('cascade');
