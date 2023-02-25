@@ -3,6 +3,8 @@
 namespace App\Console\Commands;
 
 use App\Models\User;
+use Domains\User\Action\BlockingAllUserThatEndedSubscriptionAction;
+use Domains\User\Action\ListAllUsersThatEndedSubscriptionAction;
 use Domains\User\Enums\Status;
 use Illuminate\Console\Command;
 use Illuminate\Database\Eloquent\Builder;
@@ -36,7 +38,7 @@ class CheckSubscriptionEndedCommand extends Command
 
             $this->line("deactivate all users that subscription is ending");
 
-            $countOfUsers = User::query()->whereHas('subscription', fn (Builder $query) => $query->where('ended_at', '<', Carbon::now()))->update(['status' => Status::BLOCKED]);
+            $countOfUsers = (new BlockingAllUserThatEndedSubscriptionAction)();
 
             $this->info("blocked  $countOfUsers users");
 
@@ -45,10 +47,10 @@ class CheckSubscriptionEndedCommand extends Command
 
         $this->line('show all users that ending subscription');
 
+        $columns = ['name', 'username', 'email'];
         $this->table(
-            ['name', 'username', 'email'],
-            User::query()->whereHas('subscription', fn (Builder $query) => $query->where('ended_at', '<', Carbon::now()))->get(['name', 'username', 'email'])->toArray()
-
+            $columns,
+            (new ListAllUsersThatEndedSubscriptionAction)($columns)
         );
 
         return Command::SUCCESS;
