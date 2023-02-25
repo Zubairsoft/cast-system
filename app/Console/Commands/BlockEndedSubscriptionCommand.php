@@ -2,6 +2,8 @@
 
 namespace App\Console\Commands;
 
+use App\Models\User;
+use Domains\User\Action\BlockingAllUserThatEndedSubscriptionAction;
 use Illuminate\Console\Command;
 
 class BlockEndedSubscriptionCommand extends Command
@@ -11,14 +13,14 @@ class BlockEndedSubscriptionCommand extends Command
      *
      * @var string
      */
-    protected $signature = 'command:name';
+    protected $signature = 'subscription:block';
 
     /**
      * The console command description.
      *
      * @var string
      */
-    protected $description = 'Command description';
+    protected $description = 'block all users that ending subscription';
 
     /**
      * Execute the console command.
@@ -27,6 +29,10 @@ class BlockEndedSubscriptionCommand extends Command
      */
     public function handle()
     {
+        $count_of_blocking_users = (new BlockingAllUserThatEndedSubscriptionAction)();
+
+        $this->info("the count of blocking user is $count_of_blocking_users");
+
         return Command::SUCCESS;
     }
 }
