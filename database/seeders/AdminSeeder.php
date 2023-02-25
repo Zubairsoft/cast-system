@@ -6,8 +6,6 @@ use App\Models\User;
 use Carbon\Carbon;
 use Domains\User\Enums\Role;
 use Domains\User\Enums\Status;
-use Hash;
-use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 
 class AdminSeeder extends Seeder
