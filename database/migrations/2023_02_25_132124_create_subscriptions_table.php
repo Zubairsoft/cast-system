@@ -16,6 +16,12 @@ return new class extends Migration
         Schema::create('subscriptions', function (Blueprint $table) {
             $table->uuid('id')->primary();
 
+            $table->unsignedBigInteger('subscription_id');
+            $table->string('type');
+            $table->date('ended_at');
+
+            $table->foreign('subscription_id')->references('id')->on('users')->onDelete('cascade');
+
             $table->timestamps();
         });
     }
