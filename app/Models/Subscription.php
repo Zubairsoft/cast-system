@@ -9,17 +9,19 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 class Subscription extends Model
 {
-    use HasFactory,HasUuids;
+    use HasFactory, HasUuids;
 
-    protected $fillable=[
+    protected $fillable = [
+        'started_at',
         'ended_at'
     ];
 
-    protected $cast=[
-        'end_at'=>'datetime:Y-m-d',
+    protected $cast = [
+        'started_at' => 'datetime:Y-m-d',
+        'end_at' => 'datetime:Y-m-d'
     ];
 
-    public function subscription():BelongsTo
+    public function subscription(): BelongsTo
     {
         return $this->belongsTo(User::class);
     }
