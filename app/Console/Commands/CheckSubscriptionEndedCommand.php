@@ -2,13 +2,9 @@
 
 namespace App\Console\Commands;
 
-use App\Models\User;
 use Domains\User\Action\BlockingAllUserThatEndedSubscriptionAction;
 use Domains\User\Action\ListAllUsersThatEndedSubscriptionAction;
-use Domains\User\Enums\Status;
 use Illuminate\Console\Command;
-use Illuminate\Database\Eloquent\Builder;
-use Illuminate\Support\Carbon;
 
 class CheckSubscriptionEndedCommand extends Command
 {

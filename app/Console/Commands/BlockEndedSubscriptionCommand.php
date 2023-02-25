@@ -2,7 +2,6 @@
 
 namespace App\Console\Commands;
 
-use App\Models\User;
 use Domains\User\Action\BlockingAllUserThatEndedSubscriptionAction;
 use Illuminate\Console\Command;
 
