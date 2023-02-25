@@ -91,7 +91,7 @@ class User extends Authenticatable implements MustVerifyEmail
 
     public function subscription(): HasOne
     {
-        return $this->hasOne(Subscription::class);
+        return $this->hasOne(Subscription::class , 'subscription_id');
     }
 
     ################# scope #########################
