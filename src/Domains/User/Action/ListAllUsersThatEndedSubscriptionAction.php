@@ -2,9 +2,14 @@
 
 namespace Domains\User\Action;
 
+use App\Models\User;
+use Illuminate\Database\Eloquent\Builder;
+use Illuminate\Support\Carbon;
+
 class ListAllUsersThatEndedSubscriptionAction
 {
-    public function __invoke(): array
+    public function __invoke(array $columns): array
     {
+        return User::query()->whereHas('subscription', fn (Builder $query) => $query->where('ended_at', '<', Carbon::now()))->get($columns)->toArray();
     }
 }
