@@ -14,6 +14,8 @@ use App\Http\Controllers\Api\v1\Dashboard\Admin\Categories\ToggleCategoryActivat
 use App\Http\Controllers\Api\v1\Dashboard\Admin\Categories\UpdateCategoryController;
 use App\Http\Controllers\Api\v1\Dashboard\Admin\Companies\IndexCompanyController;
 use App\Http\Controllers\Api\v1\Dashboard\Admin\Companies\ShowCompanyController;
+use App\Http\Controllers\Api\v1\Dashboard\Admin\ContactList\StoreContactListController;
+use App\Http\Controllers\Api\v1\Dashboard\Admin\ContactUs\IndexContactUsController;
 use App\Http\Controllers\Api\v1\Dashboard\Admin\Notification\IndexNotificationController;
 use App\Http\Controllers\Api\v1\Dashboard\Admin\Notification\ShowNotificationController;
 use App\Http\Controllers\Api\v1\Dashboard\Companies\Albums\DestroyAlbumController;
@@ -40,6 +42,7 @@ use Illuminate\Support\Facades\Route;
 
 Route::name('dashboard.')->prefix('dashboard')->whereUuid(['id'])->group(function () {
     Route::name('admin.')->prefix('admin')->group(function () {
+
         Route::post(
             'login',
             LoginController::class
@@ -110,6 +113,10 @@ Route::name('dashboard.')->prefix('dashboard')->whereUuid(['id'])->group(functio
                     AdminToggleArtistActivationController::class
                 )->name('activate-toggle');
             });
+
+            Route::name('contactUs')->prefix('contact-us')->group(static function (){
+                Route::get('/',IndexContactUsController::class)->name('index');
+            });
         });
     });
 
@@ -177,7 +184,6 @@ Route::name('dashboard.')->prefix('dashboard')->whereUuid(['id'])->group(functio
                     '/{id}',
                     UpdateMusicController::class
                 )->name('update');
-                
             });
 
             Route::name('artists.')->prefix('artists')->group(function () {
@@ -215,3 +221,4 @@ Route::name('dashboard.')->prefix('dashboard')->whereUuid(['id'])->group(functio
         });
     });
 });
+
