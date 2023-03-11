@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Api\v1\Home\ContactUs\StoreContactUsController;
 use App\Http\Controllers\Api\v1\Home\Favorites\DestroyFavoriteController;
 use App\Http\Controllers\Api\v1\Home\Music\IndexMusicController;
 use App\Http\Controllers\Api\v1\Home\Favorites\StoreFavoriteController;
@@ -10,6 +11,7 @@ use App\Http\Controllers\Api\v1\Users\Music\Comments\StoreCommentController;
 use App\Http\Controllers\Api\v1\Users\Music\Comments\UpdateCommentController;
 use Illuminate\Support\Facades\Route;
 
+Route::post('/contact-us',StoreContactUsController::class);
 Route::name('comments.')->prefix('comments')->group(static function () {
     Route::post(
         '/',
