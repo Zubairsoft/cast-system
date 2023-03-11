@@ -23,6 +23,7 @@ class DatabaseSeeder extends Seeder
             AlbumSeeder::class,
             ArtistSeeder::class,
             MusicSeeder::class,
+            ContactListSeeder::class
         ]);
     }
 }
