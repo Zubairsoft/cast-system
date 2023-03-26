@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use Domains\Categories\Presenter\CategoryPresenter;
+use Domains\Global\Traits\RegisterEventActivityLog;
 use Domains\Support\Traits\ToggleIsActiveTrait;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Concerns\HasUuids;
@@ -13,7 +14,7 @@ use Illuminate\Database\Eloquent\Relations\MorphOne;
 
 class Category extends Model
 {
-    use HasFactory, CategoryPresenter, HasUuids, ToggleIsActiveTrait;
+    use HasFactory, CategoryPresenter, HasUuids, ToggleIsActiveTrait, RegisterEventActivityLog;
     protected $fillable = [
         'name_ar',
         'name_en',
@@ -21,7 +22,6 @@ class Category extends Model
     ];
 
     protected $cast = [
-        'id' => 'string',
         'is_active' => 'boolean'
     ];
 
@@ -34,7 +34,7 @@ class Category extends Model
     {
         return $this->morphOne(Image::class, 'imageable');
     }
-    
+
     ########################### scopes  #####################3
     public function scopeSearch(Builder $query, $text): Builder
     {
