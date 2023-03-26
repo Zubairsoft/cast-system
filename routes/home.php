@@ -65,7 +65,7 @@ Route::name('music.')->prefix('music')->group(static function () {
             Route::delete(
                 '/{commentId}',
                 DestroyCommentController::class
-            )->name('update');
+            )->name('delete');
         });
     });
 });
