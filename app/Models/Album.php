@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Domains\Albums\Presenter\AlbumPresenter;
 use Domains\Global\Traits\Activation;
+use Domains\Global\Traits\RegisterEventActivityLog;
 use Domains\Support\Traits\ToggleIsActiveTrait;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Concerns\HasUuids;
@@ -16,7 +17,7 @@ use Illuminate\Support\Facades\Auth;
 
 class Album extends Model
 {
-    use HasFactory, HasUuids, AlbumPresenter, ToggleIsActiveTrait, Activation;
+    use HasFactory, HasUuids, AlbumPresenter, ToggleIsActiveTrait, Activation , RegisterEventActivityLog;
 
     protected $fillable = [
         'name_en',
