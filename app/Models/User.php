@@ -14,6 +14,7 @@ use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
 use Domains\User\Trait\Account\AccountVerification;
 use Domains\User\Trait\Account\HasRole;
+use Domains\User\Trait\Account\ManageSubscription;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\Relations\HasManyThrough;
@@ -21,7 +22,7 @@ use Illuminate\Database\Eloquent\Relations\HasOne;
 
 class User extends Authenticatable implements MustVerifyEmail
 {
-    use HasApiTokens, HasFactory, Notifiable, AccountVerification, HasRole, UserPresenter, RegisterEventActivityLog;
+    use HasApiTokens, HasFactory, Notifiable, AccountVerification, HasRole, UserPresenter,ManageSubscription, RegisterEventActivityLog;
 
     /**
      * The attributes that are mass assignable.
