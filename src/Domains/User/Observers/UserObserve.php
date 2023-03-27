@@ -12,11 +12,7 @@ class UserObserve
   public function created(User $user)
   {
     if (!$user->hasRole(Role::ADMIN)) {
-      $user->subscription()->create([
-        'type' => Type::TRIAL,
-        'started_at' => Carbon::now(),
-        'ended_at' => Carbon::now()->addDays(30)
-      ]);
+      $user->setSubscriptionAsLimited();
     }
   }
 }
