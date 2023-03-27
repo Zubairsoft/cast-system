@@ -22,7 +22,7 @@ class Subscription extends Model
         'end_at' => 'datetime:Y-m-d'
     ];
 
-    public function subscription(): BelongsTo
+    public function user(): BelongsTo
     {
         return $this->belongsTo(User::class);
     }

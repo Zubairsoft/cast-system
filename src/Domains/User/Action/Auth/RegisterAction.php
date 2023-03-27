@@ -19,9 +19,7 @@ class RegisterAction
     public function __invoke(RegisterRequest $request): User
     {
         $attributes = $request->validated();
-
-       // $attributes['avatar'] = $this->uploadImage($request->avatar,'Users/avatar');
-    
+            
         $data = User::create($attributes);
 
         return $data;

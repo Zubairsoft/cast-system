@@ -2,8 +2,9 @@
 
 namespace App\Console\Commands;
 
-use Domains\User\Action\BlockingAllUserThatEndedSubscriptionAction;
-use Domains\User\Action\ListAllUsersThatEndedSubscriptionAction;
+use Domains\User\Action\Commands\BlockingAllUserThatEndedSubscriptionAction;
+use Domains\User\Action\Commands\LimitedAllUserThatEndedSubscriptionAction;
+use Domains\User\Action\Commands\ListAllUsersThatEndedSubscriptionAction;
 use Illuminate\Console\Command;
 
 class CheckSubscriptionEndedCommand extends Command
@@ -13,7 +14,7 @@ class CheckSubscriptionEndedCommand extends Command
      *
      * @var string
      */
-    protected $signature = 'subscription:ended  {--block} ';
+    protected $signature = 'subscription:ended  {--block}{--limited} ';
 
     /**
      * The console command description.
@@ -30,25 +31,36 @@ class CheckSubscriptionEndedCommand extends Command
     public function handle()
     {
 
-        if ($this->option('block')) {
+        match (true) {
+            $this->option('block') => $this->blockedAllUserThatEndingSubscription(),
+            $this->option('limited') => $this->LimitedAllUserThatEndingSubscription(),
+            default => $this->listAllUserThatEndedSubscription(['name', 'email'])
+        };
 
-            $this->line("deactivate all users that subscription is ending");
+        return Command::SUCCESS;
+    }
 
-            $countOfUsers = (new BlockingAllUserThatEndedSubscriptionAction)();
-
-            $this->info("blocked  $countOfUsers users");
-
-            return Command::SUCCESS;
-        }
-
+    private function listAllUserThatEndedSubscription(array $columns): void
+    {
         $this->line('show all users that ending subscription');
 
-        $columns = ['name', 'username', 'email'];
         $this->table(
             $columns,
             (new ListAllUsersThatEndedSubscriptionAction)($columns)
         );
+    }
 
-        return Command::SUCCESS;
+    private function blockedAllUserThatEndingSubscription(): void
+    {
+        $countOfUsers = (new BlockingAllUserThatEndedSubscriptionAction)();
+
+        $this->info("blocked  $countOfUsers users");
+    }
+
+    private function LimitedAllUserThatEndingSubscription(): void
+    {
+        $countOfUsers = (new LimitedAllUserThatEndedSubscriptionAction)();
+
+        $this->info("Limited  $countOfUsers users");
     }
 }
