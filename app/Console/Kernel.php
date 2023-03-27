@@ -3,6 +3,7 @@
 namespace App\Console;
 
 use App\Console\Commands\BlockEndedSubscriptionCommand;
+use Artisan;
 use Illuminate\Console\Scheduling\Schedule;
 use Illuminate\Foundation\Console\Kernel as ConsoleKernel;
 
@@ -17,6 +18,8 @@ class Kernel extends ConsoleKernel
     protected function schedule(Schedule $schedule)
     {
          $schedule->command( BlockEndedSubscriptionCommand::class)->daily()->runInBackground();
+         $schedule->command( Artisan::call('subscription:ended --limited'))->daily()->runInBackground();
+
     }
 
     /**
