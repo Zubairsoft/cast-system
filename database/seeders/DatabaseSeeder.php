@@ -19,11 +19,13 @@ class DatabaseSeeder extends Seeder
             AdminSeeder::class,
             UserSeeder::class,
             CompanySeeder::class,
+   //         SubscriptionSeeder::class,
             CategorySeeder::class,
             AlbumSeeder::class,
             ArtistSeeder::class,
             MusicSeeder::class,
-            ContactListSeeder::class
+            ContactListSeeder::class,
+            WalletSeeder::class
         ]);
     }
 }

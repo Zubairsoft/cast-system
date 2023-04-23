@@ -2,10 +2,9 @@
 
 namespace App\Models;
 
-// use Illuminate\Contracts\Auth\MustVerifyEmail;
-
 use Domains\Global\Traits\RegisterEventActivityLog;
 use Domains\User\Enums\Role;
+use Domains\User\Enums\Subscription\Type;
 use Domains\User\Presenter\UserPresenter;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
@@ -23,7 +22,6 @@ use Illuminate\Database\Eloquent\Relations\HasOne;
 class User extends Authenticatable implements MustVerifyEmail
 {
     use HasApiTokens, HasFactory, Notifiable, AccountVerification, HasRole, UserPresenter,ManageSubscription, RegisterEventActivityLog;
-
     /**
      * The attributes that are mass assignable.
      *
@@ -48,6 +46,7 @@ class User extends Authenticatable implements MustVerifyEmail
         'password',
         'remember_token',
     ];
+    
 
     /**
      * The attributes that should be cast.
@@ -91,9 +90,9 @@ class User extends Authenticatable implements MustVerifyEmail
         return $this->hasMany(favorite::class, 'user_id');
     }
 
-    public function subscription(): HasOne
+    public function subscriptions(): HasMany
     {
-        return $this->hasOne(Subscription::class, 'subscription_id');
+        return $this->hasMany(Subscription::class, 'subscription_id');
     }
 
     ################# scope #########################

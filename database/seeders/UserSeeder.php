@@ -21,7 +21,7 @@ class UserSeeder extends Seeder
         collect($this->defaultAccounts())->each(function($user){
              User::query()->create($user);
         });
-        User::factory(20)->create();
+       User::factory(20)->create();
 
     }
 }

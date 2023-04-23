@@ -18,6 +18,8 @@ use App\Http\Controllers\Api\v1\Dashboard\Admin\ContactList\StoreContactListCont
 use App\Http\Controllers\Api\v1\Dashboard\Admin\ContactUs\IndexContactUsController;
 use App\Http\Controllers\Api\v1\Dashboard\Admin\Notification\IndexNotificationController;
 use App\Http\Controllers\Api\v1\Dashboard\Admin\Notification\ShowNotificationController;
+use App\Http\Controllers\Api\v1\Dashboard\Admin\Wallets\IndexWalletController;
+use App\Http\Controllers\Api\v1\Dashboard\Admin\Wallets\StatisticsWalletController;
 use App\Http\Controllers\Api\v1\Dashboard\Companies\Albums\DestroyAlbumController;
 use App\Http\Controllers\Api\v1\Dashboard\Companies\Albums\ShowAlbumController;
 use App\Http\Controllers\Api\v1\Dashboard\Companies\Albums\ToggleAlbumActivationController;
@@ -114,8 +116,17 @@ Route::name('dashboard.')->prefix('dashboard')->whereUuid(['id'])->group(functio
                 )->name('activate-toggle');
             });
 
-            Route::name('contactUs')->prefix('contact-us')->group(static function (){
-                Route::get('/',IndexContactUsController::class)->name('index');
+            Route::name('contactUs')->prefix('contact-us')->group(static function () {
+                Route::get('/', IndexContactUsController::class)->name('index');
+            });
+
+            Route::name('wallets.')->prefix('wallets')->group(static function () {
+                Route::get('/', IndexWalletController::class)->name('index');
+
+            });
+
+            Route::name('statistics.')->prefix('statistics')->group(static function(){
+              Route::get('wallet',StatisticsWalletController::class)->name('wallet');
             });
         });
     });
@@ -221,4 +232,3 @@ Route::name('dashboard.')->prefix('dashboard')->whereUuid(['id'])->group(functio
         });
     });
 });
-
