@@ -4,15 +4,19 @@ namespace Domains\User\Observers;
 
 use App\Models\User;
 use Domains\User\Enums\Role;
-use Domains\User\Enums\Subscription\Type;
-use Illuminate\Support\Carbon;
+use Domains\User\Trait\Account\ManageSubscription;
 
 class UserObserve
 {
+  use ManageSubscription;
+
   public function created(User $user)
   {
     if (!$user->hasRole(Role::ADMIN)) {
-      $user->setSubscriptionAsLimited();
+      if ($user->hasRole(Role::COMPANY)) {
+        $this->setSubscriptionAsTrial($user);
+      }
+      $this->setSubscriptionAsLimited($user);
     }
   }
 }
