@@ -6,8 +6,6 @@ namespace Domains\User\Trait;
 use Carbon\Carbon;
 use Domains\User\Enums\Role;
 use Domains\User\Enums\Status;
-use Illuminate\Support\Arr;
-use Illuminate\Support\Facades\Hash;
 
 trait HasDefaultAccount
 {
