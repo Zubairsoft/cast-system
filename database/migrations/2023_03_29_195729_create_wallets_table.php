@@ -13,16 +13,12 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('subscriptions', function (Blueprint $table) {
+        Schema::create('wallets', function (Blueprint $table) {
             $table->uuid('id')->primary();
+            $table->unsignedBigInteger('user_id');
+            $table->double('amount');
 
-            $table->unsignedBigInteger('subscription_id');
-            $table->string('type');
-            $table->date('started_at');
-            $table->date('ended_at')->nullable();
-
-            $table->foreign('subscription_id')->references('id')->on('users')->onDelete('cascade');
-
+            $table->foreign('user_id')->references('id')->on('users');
             $table->timestamps();
         });
     }
@@ -34,6 +30,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('subscriptions');
+        Schema::dropIfExists('wallets');
     }
 };
